@@ -80,19 +80,19 @@
     
     // 200mの範囲円を追加
     circleTokushimaeki = [MKCircle circleWithCenterCoordinate:coTokushimajoukouen radius: 2000.0];
-    circleBizan = [MKCircle circleWithCenterCoordinate:coBizan radius: 2000.0];
-    circleTsurugisan = [MKCircle circleWithCenterCoordinate:coBunkanomori radius: 2000.0];
+    circleBizan =        [MKCircle circleWithCenterCoordinate:coBizan             radius: 2000.0];
+    circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 2000.0];
     //[self getObject];
     //[self defaultMapSettei];
     CLLocationDistance radiusOnMeter = 2000.0;
     
-    grRegionTokushimaeki = [[CLRegion alloc] initCircularRegionWithCenter:coTokushimajoukouen radius:radiusOnMeter identifier:@"徳島城公園:吟行地"];
+    grRegionTokushimaeki = [[CLCircularRegion alloc] initWithCenter:coTokushimajoukouen radius:radiusOnMeter identifier:@"徳島城公園:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionTokushimaeki];
     
-    grRegionBizan = [[CLRegion alloc] initCircularRegionWithCenter:coBizan radius:radiusOnMeter identifier:@"眉山:吟行地"];
+    grRegionBizan = [[CLCircularRegion alloc] initWithCenter:coBizan radius:radiusOnMeter identifier:@"眉山:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionBizan];
     
-    grRegionTsurugisan = [[CLRegion alloc] initCircularRegionWithCenter:coBunkanomori radius:radiusOnMeter identifier:@"文化の森:吟行地"];
+    grRegionTsurugisan = [[CLCircularRegion alloc] initWithCenter:coBunkanomori radius:radiusOnMeter identifier:@"文化の森:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionTsurugisan];
     
     self.rejonLabel.numberOfLines = 4;
