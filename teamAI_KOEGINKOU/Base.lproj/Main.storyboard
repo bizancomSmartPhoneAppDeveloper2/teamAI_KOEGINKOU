@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--みなの俳句-->
@@ -16,21 +18,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Uc2-Ai-3v5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Uc2-Ai-3v5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJD-qT-qED">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJD-qT-qED">
                                 <rect key="frame" x="37" y="34" width="300" height="88"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="vGL-1p-fIG">
+                                <rect key="frame" x="20" y="41" width="334" height="538"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="katyou.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cph-fi-xiA">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="538"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56j-FV-xke">
+                                        <rect key="frame" x="242" y="472" width="72" height="41"/>
+                                        <color key="backgroundColor" red="1" green="0.64150928347322189" blue="0.98838913806401829" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="閉じる">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeStartUpView" destination="9pv-A4-QxB" eventType="touchUpInside" id="9WB-Ue-SKN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3u-ne-E43">
+                                        <rect key="frame" x="33" y="472" width="72" height="41"/>
+                                        <color key="backgroundColor" red="1" green="0.98286187339999997" blue="0.71905190929999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="2GT-BD-LJu"/>
+                                            <constraint firstAttribute="width" constant="72" id="FsI-9T-KLm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="次へ">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="forDescription:" destination="9pv-A4-QxB" eventType="touchUpInside" id="VTA-Vx-jTL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="j3u-ne-E43" firstAttribute="leading" secondItem="vGL-1p-fIG" secondAttribute="leading" constant="33" id="FqX-tX-YtX"/>
+                                    <constraint firstAttribute="trailing" secondItem="56j-FV-xke" secondAttribute="trailing" constant="20" id="Kmu-QE-Ubp"/>
+                                    <constraint firstAttribute="bottom" secondItem="j3u-ne-E43" secondAttribute="bottom" constant="25" id="c5H-Kc-GAS"/>
+                                    <constraint firstAttribute="bottom" secondItem="56j-FV-xke" secondAttribute="bottom" constant="25" id="lpp-yg-B70"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TJD-qT-qED" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="14" id="5Di-Ce-fJa"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Uc2-Ai-3v5" secondAttribute="bottom" id="6b2-KA-x0d"/>
+                            <constraint firstItem="vGL-1p-fIG" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="21" id="DCE-XH-Zke"/>
+                            <constraint firstItem="TJD-qT-qED" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="21" id="Ka6-Nh-JiR"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="TJD-qT-qED" secondAttribute="bottom" constant="496" id="Rxn-Qt-2Mu"/>
+                            <constraint firstAttribute="trailing" secondItem="Uc2-Ai-3v5" secondAttribute="trailing" id="Uip-NQ-6r3"/>
+                            <constraint firstItem="Uc2-Ai-3v5" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="WbG-bI-O8Q"/>
+                            <constraint firstItem="vGL-1p-fIG" firstAttribute="centerX" secondItem="TJD-qT-qED" secondAttribute="centerX" id="frq-wf-xWd"/>
+                            <constraint firstItem="Uc2-Ai-3v5" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="gvZ-su-YvB"/>
+                            <constraint firstItem="vGL-1p-fIG" firstAttribute="centerX" secondItem="Uc2-Ai-3v5" secondAttribute="centerX" id="k7d-27-cRk"/>
+                            <constraint firstItem="vGL-1p-fIG" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="20" id="sqn-e5-jz1"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="vGL-1p-fIG" secondAttribute="bottom" constant="39" id="uI6-5M-2zc"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="みなの俳句" image="first" id="acW-dT-cKf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="StartUpUIImages" destination="Cph-fi-xiA" id="FwP-zr-Ylp"/>
+                        <outlet property="StartUpUIView" destination="vGL-1p-fIG" id="7fB-5x-ynA"/>
                         <outlet property="map" destination="Uc2-Ai-3v5" id="uIk-Cc-fVh"/>
                         <outlet property="rejonLabel" destination="TJD-qT-qED" id="SEZ-Wt-rc2"/>
                     </connections>
@@ -334,6 +393,7 @@
         <image name="haikupost.png" width="280" height="282"/>
         <image name="ikkunokosu.png" width="406" height="155"/>
         <image name="ikkuyomu.png" width="400" height="400"/>
+        <image name="katyou.png" width="301" height="481"/>
         <image name="kuwokakunin.png" width="400" height="400"/>
         <image name="second" width="30" height="30"/>
         <image name="wa2.png" width="301" height="481"/>

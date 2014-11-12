@@ -39,9 +39,28 @@
     CLRegion *grRegionTsurugisan;
     NSMutableArray *inRejon;
     NSString *nsstringInRejon;
+    
+    UIView *StartUpUIView;//説明文を書く
+    NSArray *DescImage;
+    int ID;
 }
 
 @synthesize locationManager;
+
+
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+ //   [self checkFirstStartUp];
+    [super viewWillAppear:animated];
+    
+    
+    
+}
+
+
+
 
 - (void)viewDidLoad {
     [self newAnnotation];
@@ -78,6 +97,12 @@
     
     self.rejonLabel.numberOfLines = 4;
     self.rejonLabel.hidden = YES;
+    
+    
+    //説明の画面表示
+    ID = 0;
+    DescImage = @[@"ginkou.png",@"katyou.png",@"wa2.png"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -402,5 +427,45 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
 
 - (IBAction)goBackHome:(UIStoryboardSegue *)segue{
 }
+
+
+
+//初期起動時に説明文を隠すか表すか判定する。
+- (void)descriptionImg {
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    if (appDelegate.saveint == 0) {
+        _StartUpUIImages.image = [UIImage imageNamed:@"katyou.png"];
+        _StartUpUIView.hidden = NO;
+        
+    }
+    else
+    {
+        _StartUpUIImages.image = nil;
+        _StartUpUIView.hidden = YES;
+        
+    }
+    
+}
+
+//説明文のイメージを表示するボタン
+- (IBAction)forDescription:(id)sender
+{
+
+    ID++;
+    if(DescImage.count <= ID)
+    {
+        ID = 0;
+    }
+    [self.StartUpUIImages setImage:[UIImage imageNamed:[DescImage objectAtIndex:ID]]];
+
+}
+
+
+//説明文を隠すボタン
+-(void)closeStartUpView
+{
+    _StartUpUIView.hidden = YES;
+}
+
 
 @end

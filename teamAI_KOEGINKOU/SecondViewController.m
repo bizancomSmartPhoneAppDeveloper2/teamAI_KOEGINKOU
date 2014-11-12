@@ -52,7 +52,7 @@
             audioSession = [AVAudioSession sharedInstance];
             NSError *error = nil;
             // 使用している機種が録音に対応しているか
-            if ([audioSession inputIsAvailable]) {
+            if (audioSession.inputAvailable) {
                 [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
             }
             if(error){
@@ -69,7 +69,7 @@
                                                                  NSUserDomainMask,YES);
             NSString *documentDir = [filePaths objectAtIndex:0];
             //wavファイルとして保存する
-            NSString *path = [documentDir stringByAppendingPathComponent:@"rec.wav"];
+            path = [documentDir stringByAppendingPathComponent:@"rec.wav"];
             NSURL *recordingURL = [NSURL fileURLWithPath:path];
             NSDictionary *dic;
             //AVEncoderAudioQualityKey オーディオ品質を設定するキー?
@@ -128,7 +128,7 @@
                                                              NSUserDomainMask,YES);
     NSString *documentDir = [filePaths objectAtIndex:0];
     //rec.wavファイルがあるパスの文字列を格納
-    NSString *path = [documentDir stringByAppendingPathComponent:@"rec.wav"];
+    path = [documentDir stringByAppendingPathComponent:@"rec.wav"];
     NSURL *recordingURL = [NSURL fileURLWithPath:path];
     
     avPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:recordingURL error:nil];

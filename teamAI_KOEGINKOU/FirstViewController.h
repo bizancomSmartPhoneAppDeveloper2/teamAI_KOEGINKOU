@@ -15,6 +15,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 #import "AppDelegate.h"
+#import "Discription.h"
 
 
 
@@ -31,6 +32,13 @@
 //マップの変数
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (weak, nonatomic) IBOutlet UILabel *rejonLabel;
+@property (weak, nonatomic) IBOutlet UIView *StartUpUIView;
+@property (weak, nonatomic) IBOutlet UIImageView *StartUpUIImages;
+
+-(void)checkFirstStartUp;
+-(IBAction)closeStartUpView;
+
+
 
 @end
 
