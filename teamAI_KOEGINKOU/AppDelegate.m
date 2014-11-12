@@ -14,6 +14,9 @@
 
 @implementation AppDelegate
 
+@synthesize didRejon;
+@synthesize saveint;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

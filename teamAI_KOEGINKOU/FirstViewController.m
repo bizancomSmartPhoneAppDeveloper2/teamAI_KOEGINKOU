@@ -40,13 +40,13 @@
     NSMutableArray *inRejon;
     NSString *nsstringInRejon;
     
-    UIView *StartUpUIView;//説明文を書く
+    UIView *_StartUpUIView;//説明文を書く
     NSArray *DescImage;
     int ID;
 }
 
 @synthesize locationManager;
-
+@synthesize StartUpUIView;
 
 
 
@@ -435,13 +435,13 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     if (appDelegate.saveint == 0) {
         _StartUpUIImages.image = [UIImage imageNamed:@"katyou.png"];
-        _StartUpUIView.hidden = NO;
+        StartUpUIView.hidden = NO;
         
     }
     else
     {
         _StartUpUIImages.image = nil;
-        _StartUpUIView.hidden = YES;
+        StartUpUIView.hidden = YES;
         
     }
     
@@ -464,7 +464,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
 //説明文を隠すボタン
 -(void)closeStartUpView
 {
-    _StartUpUIView.hidden = YES;
+    StartUpUIView.hidden = YES;
 }
 
 
