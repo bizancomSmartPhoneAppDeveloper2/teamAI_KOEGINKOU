@@ -16,7 +16,8 @@
 @interface FirstViewController ()
 @end
 
-@implementation FirstViewController{
+@implementation FirstViewController
+{
     CLLocationDegrees latitude;
     CLLocationDegrees longitude;
     CLLocationCoordinate2D co;
@@ -52,7 +53,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
- //   [self checkFirstStartUp];
+   //[self checkFirstStartUp];
     [super viewWillAppear:animated];
     
     
@@ -303,7 +304,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     //coを元にsampleannotetion型の変数を生成
     CustomAnnotation *annotetion = [[CustomAnnotation alloc]initwithCoordinate:coBizan];
     annotetion.title = @"眉山:吟行地";
-    annotetion.subtitle = [NSString stringWithFormat:@"%d句の登録があります",bizan_number];
+    annotetion.subtitle = [NSString stringWithFormat:@"%ld句の登録があります",(long)bizan_number];
     
     
     
@@ -313,7 +314,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     //coを元にannotetion型の2つめの変数を生成
     CustomAnnotation *annotetion2 = [[CustomAnnotation alloc]initwithCoordinate:coTokushimajoukouen];
     annotetion2.title = @"徳島城公園:吟行地";
-    annotetion2.subtitle = [NSString stringWithFormat:@"%d句の登録があります",number];
+    annotetion2.subtitle = [NSString stringWithFormat:@"%ld句の登録があります",(long)number];
     
     //緯度と経度情報を格納する変数の値を変更
     coBunkanomori.latitude = 34.044114;
@@ -321,7 +322,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     //coを元にannotetion型の2つめの変数を生成
     CustomAnnotation *annotetion3 = [[CustomAnnotation alloc]initwithCoordinate:coBunkanomori];
     annotetion3.title = @"文化の森:吟行地";
-    annotetion3.subtitle = [NSString stringWithFormat:@"%d句の登録があります",tsurugisan_number];
+    annotetion3.subtitle = [NSString stringWithFormat:@"%ld句の登録があります",(long)tsurugisan_number];
     
     //2つアノテーションを追加
     [self.map addAnnotation:annotetion];

@@ -46,7 +46,9 @@
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate]; // デリゲート呼び出し
     inRejon = appDelegate.didRejon;
     NSLog(@"nnnnnnnnn%@",inRejon[0]);
-    [self rokuonStartHidden];
+    
+    //下記のメソッドを読み込むと一句聞くボタンで落ちてします。
+   // [self rokuonStartHidden];
     
     buttonTitleArray = [NSMutableArray array];
     buttonTitleArray =

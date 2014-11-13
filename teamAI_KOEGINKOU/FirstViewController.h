@@ -15,7 +15,6 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 #import "AppDelegate.h"
-#import "Discription.h"
 
 
 
@@ -35,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIView *StartUpUIView;
 @property (weak, nonatomic) IBOutlet UIImageView *StartUpUIImages;
 
--(void)checkFirstStartUp;
+//-(void)checkFirstStartUp;
 -(IBAction)closeStartUpView;
 
 

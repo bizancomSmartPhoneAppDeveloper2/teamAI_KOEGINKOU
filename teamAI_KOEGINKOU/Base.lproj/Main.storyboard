@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -189,17 +188,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="washi01.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HEb-xQ-K5r">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlF-8W-kcu">
-                                <rect key="frame" x="67" y="28" width="240" height="240"/>
-                                <state key="normal" image="ikkuyomu.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="rokuonStart:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="n9r-oL-RyP"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dU2-rZ-5c5">
-                                <rect key="frame" x="67" y="301" width="240" height="240"/>
+                                <rect key="frame" x="137" y="369" width="100" height="100"/>
                                 <state key="normal" image="kuwokakunin.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -219,7 +209,17 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="IoL-cF-jwx" kind="modal" id="IMa-YS-6hU"/>
+                                    <action selector="remindIkku:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Ta7-70-3EM"/>
+                                    <segue destination="IoL-cF-jwx" kind="modal" identifier="NextToukouView" id="IMa-YS-6hU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlF-8W-kcu">
+                                <rect key="frame" x="137" y="114" width="100" height="100"/>
+                                <state key="normal" image="ikkuyomu.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="rokuonStart:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="n9r-oL-RyP"/>
                                 </connections>
                             </button>
                         </subviews>

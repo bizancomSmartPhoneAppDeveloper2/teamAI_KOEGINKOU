@@ -8,6 +8,7 @@
 
 #import "SecondViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DCAnimation.h"
 
 
 @interface SecondViewController ()
@@ -32,12 +33,16 @@
 
 
 - (void)viewDidLoad {
+    [self plaYikku];
     rokuonStarting = NO;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.rokuonStartStopImage.alpha = 0.3;
+//    self.rokuonStartStopImage.alpha = 0.3;
     //self.kuwokakunin.alpha = 0.3;
     number = 0;
+    
+    //録音したボタンを最初の段階で隠している。
+    self.kuwokakunin.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,10 +50,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)rokuonStart:(UIButton *)sender {
+- (IBAction)rokuonStart:(UIButton *)sender
+{
+    
     //録音状態でないかどうか
-        if (rokuonStarting == NO) {
-            self.rokuonStartStopImage.alpha = 1;
+        if (rokuonStarting == NO)
+        {
+            self.rokuonStartStopImage.alpha = 0.3;
             audioSession = [AVAudioSession sharedInstance];
             NSError *error = nil;
             // 使用している機種が録音に対応しているか
@@ -95,14 +103,15 @@
             rokuonStarting = YES;
         }
         //録音状態であるかどうか
-        else if(rokuonStarting == YES){
+        else if(rokuonStarting == YES)
+        {
             self.rokuonStartStopImage.alpha = 0.3;
         
             [[[UIAlertView alloc] initWithTitle:@"完了"
                                     message:@"正常に録音が完了しました。"
                                    delegate:nil
                           cancelButtonTitle:@"OK"
-                          otherButtonTitles: nil]show];
+                          otherButtonTitles:nil]show];
         
         
             //録音をやめる
@@ -113,8 +122,16 @@
             NSString *documentDir = [filePaths objectAtIndex:0];
             path = [documentDir stringByAppendingPathComponent:@"rec.wav"];
             
+            
+            self.kuwokakunin.hidden = NO;
+            [self listenYikku];
+
     }
+    
 }
+
+
+
 
 - (IBAction)rokuonListen:(UIButton *)sender {
     if(avPlayer.playing == NO){
@@ -138,5 +155,36 @@
     }
 
 }
+
+-(void)plaYikku
+{
+    DCAnimation *dcAnimation = [[DCAnimation alloc] init];
+    dcAnimation.dc_delegate = (id)self;
+    //アニメーション秒数と目標スケール値を指定
+    [dcAnimation scale:self.rokuonStartStopImage
+              duration:1.5f
+              aimScale:2.0f];
+    
+}
+
+-(void)listenYikku
+{
+    DCAnimation *dcAnimation = [[DCAnimation alloc] init];
+    dcAnimation.dc_delegate = (id)self;
+    //アニメーション秒数と目標スケール値を指定
+    [dcAnimation scale:self.kuwokakunin
+              duration:1.5f
+              aimScale:2.0f];
+    
+}
+
+- (IBAction)remindIkku:(id)sender
+{
+   
+    [self performSegueWithIdentifier:@"NextToukouView" sender:self];
+}
+
+
+
 
 @end
