@@ -11,6 +11,7 @@
 #import "tokushimajoukouenViewController.h"
 #import "bunkanomoriViewController.h"
 #import "bizanViewController.h"
+#import "FirstViewController.h"
 
 @interface toukouViewController ()
 
@@ -27,6 +28,8 @@
     NSURL *updateURL;
     NSString *path;
     NSString *filename;
+    
+    NSTimer *timeTimer;
 }
 
 - (void)viewDidLoad {
@@ -131,7 +134,7 @@
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
-        
+        [self usetimer];
         
         //webViewに遷移
         bunkanomoriViewController *bunkanomori_webView = [self.storyboard instantiateViewControllerWithIdentifier:@"bunkanomoriWebView"];
@@ -283,5 +286,24 @@
         }
     }
 }
+
+
+-(void)usetimer
+{
+
+//タイマーをセット
+timeTimer =[NSTimer scheduledTimerWithTimeInterval:5
+                                      target:self
+                                    selector:@selector(nextPage:)
+                                    userInfo:nil
+                                     repeats:NO];
+}
+
+-(void)nextPage:(NSTimer*)timer{
+    FirstViewController * newView = [[ FirstViewController alloc] initWithNibName:@"2Launch Screen" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:newView animated:YES];
+    [timeTimer invalidate];
+}
+
 
 @end

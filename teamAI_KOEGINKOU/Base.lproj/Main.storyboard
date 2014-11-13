@@ -133,7 +133,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3B-RW-IHt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="TR3-pM-re3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1141.5" y="-870.5"/>
+            <point key="canvasLocation" x="1691.5" y="-888.5"/>
         </scene>
         <!--Bizan View Controller-->
         <scene sceneID="oKY-82-RFR">
@@ -171,7 +171,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkH-LC-mGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="JiE-ET-dNE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1141.5" y="-144.5"/>
+            <point key="canvasLocation" x="1691.5" y="-158.5"/>
         </scene>
         <!--句を投稿-->
         <scene sceneID="wg7-f3-ORb">
@@ -189,28 +189,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dU2-rZ-5c5">
-                                <rect key="frame" x="137" y="369" width="100" height="100"/>
+                                <rect key="frame" x="137" y="356" width="100" height="100"/>
                                 <state key="normal" image="kuwokakunin.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="rokuonListen:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="uwH-dn-9Zi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZT-0f-09E">
-                                <rect key="frame" x="28" y="554" width="142" height="56"/>
-                                <state key="normal" title="Button" image="yarinaosu.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ez3-HX-UdT">
-                                <rect key="frame" x="199" y="554" width="142" height="56"/>
-                                <state key="normal" title="Button" image="ikkunokosu.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="remindIkku:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Ta7-70-3EM"/>
-                                    <segue destination="IoL-cF-jwx" kind="modal" identifier="NextToukouView" id="IMa-YS-6hU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlF-8W-kcu">
@@ -220,6 +204,16 @@
                                 </state>
                                 <connections>
                                     <action selector="rokuonStart:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="n9r-oL-RyP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ez3-HX-UdT">
+                                <rect key="frame" x="116" y="545" width="142" height="56"/>
+                                <state key="normal" title="Button" image="ikkunokosu.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="remindIkku:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Ta7-70-3EM"/>
+                                    <segue destination="IoL-cF-jwx" kind="modal" identifier="NextToukouView" id="IMa-YS-6hU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -272,7 +266,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5f-3h-BfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FDA-PW-XWB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1141.5" y="585.5"/>
+            <point key="canvasLocation" x="1691.5" y="573.5"/>
         </scene>
         <!--Toukou View Controller-->
         <scene sceneID="gzL-Fj-1lx">
@@ -367,6 +361,36 @@
             </objects>
             <point key="canvasLocation" x="749.5" y="923.5"/>
         </scene>
+        <!--Complete View Controller-->
+        <scene sceneID="F7P-yp-Fud">
+            <objects>
+                <viewController id="wKR-Vx-T5O" userLabel="Complete View Controller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bRP-Xb-HzP"/>
+                        <viewControllerLayoutGuide type="bottom" id="GAF-Ud-aQG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hEk-sT-pPI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LqL-xU-jm7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBz-5f-0YW">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xwK-el-fxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1335" y="1386"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -398,6 +422,5 @@
         <image name="second" width="30" height="30"/>
         <image name="wa2.png" width="301" height="481"/>
         <image name="washi01.jpg" width="641" height="481"/>
-        <image name="yarinaosu.png" width="406" height="155"/>
     </resources>
 </document>
