@@ -24,13 +24,8 @@
     CLLocationCoordinate2D coTokushimajoukouen;
     CLLocationCoordinate2D coBizan;
     CLLocationCoordinate2D coBunkanomori;
-    NSString *urlstr;
-    NSURL *url;
-    NSURLRequest *request;
-    NSData *data;
-    NSString *name;
-    AVAudioSession *audioSession;
-    AVAudioPlayer *avPlayer;
+
+
     MKCircle *circleTokushimaeki;
     MKCircle *circleBizan;
     MKCircle *circleTsurugisan;

@@ -25,7 +25,7 @@
     NSMutableArray *inRejon;
     NSMutableArray *buttonTitleArray;
     NSString *userNameString;
-    NSURL *updateURL;
+    NSString *updateURL;
     NSString *path;
     NSString *filename;
     
@@ -41,7 +41,10 @@
     
     self.myTextField.delegate = self;
     
-    
+    self.tokushimaParkLabel.hidden = YES;
+    self.mtBizanLabel.hidden = YES;
+    self.bunkaNoMori.hidden = YES;
+
     //配列を空で生成
     inRejon = [NSMutableArray array];
     
@@ -50,8 +53,7 @@
     inRejon = appDelegate.didRejon;
     NSLog(@"nnnnnnnnn%@",inRejon[0]);
     
-    //下記のメソッドを読み込むと一句聞くボタンで落ちてします。
-   // [self rokuonStartHidden];
+   [self rokuonStartHidden];
     
     buttonTitleArray = [NSMutableArray array];
     buttonTitleArray =
@@ -76,7 +78,7 @@
 - (IBAction)bizantourokuButton:(UIButton *)sender {
     if (userNameString == nil) {
         [[[UIAlertView alloc] initWithTitle:@"エラー"
-                                    message:@"登録文を入力してください"
+                                    message:@"名前を入力してください"
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
@@ -110,7 +112,7 @@
 - (IBAction)bunkanomoritourokuButton:(UIButton *)sender {
     if (userNameString == nil) {
         [[[UIAlertView alloc] initWithTitle:@"エラー"
-                                    message:@"登録文を入力してください"
+                                    message:@"名前を入力してください"
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
@@ -145,7 +147,7 @@
 - (IBAction)tokushimajoukouentourokuButton:(UIButton *)sender {
     if (userNameString == nil) {
         [[[UIAlertView alloc] initWithTitle:@"エラー"
-                                    message:@"登録文を入力してください"
+                                    message:@"名前を入力してください"
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
@@ -263,25 +265,39 @@
 }
 
 -(void)rokuonStartHidden{
-     NSLog(@"%ldaaaaaa%@%@",(inRejon.count),[inRejon objectAtIndex:0],[inRejon objectAtIndex:1]);
+     NSLog(@"%ldaaaaaa%@",(inRejon.count),[inRejon objectAtIndex:0]);
     
     //領域内のボタンが押された場合はWebViewに遷移
     for (int i = 0; i < inRejon.count; i++) {
-        NSLog(@"%ldaaaaaa%@%@",(inRejon.count),[inRejon objectAtIndex:0],[inRejon objectAtIndex:1]);
+        NSLog(@"%ldaaaaaa%@",(inRejon.count),[inRejon objectAtIndex:0]);
         
-        if ([inRejon containsObject:@"徳島城公園:吟行地"]) {
+        if ([inRejon containsObject:@"徳島城公園:吟行地"])
+        {
             self.tokushimajoukouenTourokuImage.hidden = NO;
-        }else{
+            self.tokushimaParkLabel.hidden = NO;
+            
+        }
+        else
+        {
             nil;
         }
-        if ([inRejon containsObject:@"眉山:吟行地"]) {
+        if ([inRejon containsObject:@"眉山:吟行地"])
+        {
             self.bizanTourokuImage.hidden = NO;
-        }else{
+            self.mtBizanLabel.hidden = NO;
+            
+        }
+        else
+        {
             nil;
         }
-        if ([inRejon containsObject:@"文化の森:吟行地"]) {
+        if ([inRejon containsObject:@"文化の森:吟行地"])
+        {
             self.bunkanomoriTourokuImage.hidden = NO;
-        }else{
+            self.bunkaNoMori.hidden = NO;
+        }
+        else
+        {
             nil;
         }
     }

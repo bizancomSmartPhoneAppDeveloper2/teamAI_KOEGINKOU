@@ -216,7 +216,7 @@
                                 </state>
                                 <connections>
                                     <action selector="remindIkku:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Ta7-70-3EM"/>
-                                    <segue destination="IoL-cF-jwx" kind="modal" identifier="NextToukouView" id="IMa-YS-6hU"/>
+                                    <segue destination="IoL-cF-jwx" kind="presentation" identifier="NextToukouView" id="IMa-YS-6hU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -287,16 +287,17 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wa2.png" translatesAutoresizingMaskIntoConstraints="NO" id="JHL-aq-AeZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登録文を入力してください" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKU-9C-Wzm">
-                                <rect key="frame" x="10" y="28" width="349" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="名前を入力してください" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKU-9C-Wzm">
+                                <rect key="frame" x="12" y="103" width="349" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="tourokubunField:" destination="IoL-cF-jwx" eventType="editingDidEnd" id="h68-VF-GFI"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elM-BS-wMS">
-                                <rect key="frame" x="112" y="76" width="145" height="145"/>
+                                <rect key="frame" x="114" y="243" width="145" height="145"/>
                                 <state key="normal" title="Button" image="haikupost.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -305,7 +306,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrY-5H-qWw">
-                                <rect key="frame" x="112" y="251" width="145" height="145"/>
+                                <rect key="frame" x="114" y="243" width="145" height="145"/>
                                 <state key="normal" title="Button" image="haikupost.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -314,7 +315,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBg-Zb-Wfz">
-                                <rect key="frame" x="112" y="424" width="145" height="145"/>
+                                <rect key="frame" x="114" y="243" width="145" height="145"/>
                                 <state key="normal" title="Button" image="haikupost.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -323,19 +324,15 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="徳島城公園吟行地に投稿" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onP-34-dAP">
-                                <rect key="frame" x="36" y="158" width="296" height="30"/>
+                                <rect key="frame" x="39" y="383" width="296" height="46"/>
+                                <color key="backgroundColor" red="0.48837333240000003" green="0.64608667990000002" blue="0.084890701299999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="眉山吟行地に投稿" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paq-ee-6rC">
-                                <rect key="frame" x="73" y="327" width="222" height="42"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="文化の森吟子地に投稿" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzO-6l-gvT">
-                                <rect key="frame" x="45" y="498" width="279" height="52"/>
+                                <rect key="frame" x="67" y="377" width="222" height="42"/>
+                                <color key="backgroundColor" red="0.48837333240000003" green="0.64608667990000002" blue="0.084890701299999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -349,21 +346,31 @@
                                     <segue destination="oAf-Jc-0o4" kind="unwind" unwindAction="goBackHome:" id="Ved-HB-JNc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="文化の森吟子地に投稿" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzO-6l-gvT">
+                                <rect key="frame" x="47" y="377" width="279" height="52"/>
+                                <color key="backgroundColor" red="0.48837333240000003" green="0.64608667990000002" blue="0.084890701299999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bizanTourokuImage" destination="DrY-5H-qWw" id="CPO-oH-XdZ"/>
+                        <outlet property="bunkaNoMori" destination="tzO-6l-gvT" id="5tZ-Um-4Wz"/>
                         <outlet property="bunkanomoriTourokuImage" destination="xBg-Zb-Wfz" id="X6d-rN-Zyd"/>
+                        <outlet property="mtBizanLabel" destination="paq-ee-6rC" id="fo2-dc-Uta"/>
                         <outlet property="myTextField" destination="dKU-9C-Wzm" id="bDp-NL-gH2"/>
+                        <outlet property="tokushimaParkLabel" destination="onP-34-dAP" id="xoi-TX-FvA"/>
                         <outlet property="tokushimajoukouenTourokuImage" destination="elM-BS-wMS" id="d3F-Jb-CRv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4x-yF-cVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="oAf-Jc-0o4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="749.5" y="923.5"/>
+            <point key="canvasLocation" x="871.5" y="1140.5"/>
         </scene>
         <!--Complete View Controller-->
         <scene sceneID="F7P-yp-Fud">
