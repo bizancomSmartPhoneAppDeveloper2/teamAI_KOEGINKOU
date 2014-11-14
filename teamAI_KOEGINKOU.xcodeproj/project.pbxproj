@@ -47,6 +47,10 @@
 		077106DF1A11B76E00C88B9A /* washi01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 077106DE1A11B76E00C88B9A /* washi01.jpg */; };
 		077106E21A11B88C00C88B9A /* toukouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077106E11A11B88C00C88B9A /* toukouViewController.m */; };
 		077106E41A11DF6700C88B9A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077106E31A11DF6700C88B9A /* QuartzCore.framework */; };
+		7D477E9B1A13A0E9009CD75C /* DCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D477E9A1A13A0E9009CD75C /* DCAnimation.m */; };
+		7D54FCA31A1536AA00F8BF93 /* anatanokoe.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FCA21A1536AA00F8BF93 /* anatanokoe.png */; };
+		7D54FCA51A15447100F8BF93 /* 2Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FCA41A15447100F8BF93 /* 2Launch Screen.xib */; };
+		7D5B5D001A132A760003E3AE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D5B5CFF1A132A760003E3AE /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +116,11 @@
 		077106E01A11B88C00C88B9A /* toukouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = toukouViewController.h; sourceTree = "<group>"; };
 		077106E11A11B88C00C88B9A /* toukouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = toukouViewController.m; sourceTree = "<group>"; };
 		077106E31A11DF6700C88B9A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7D477E991A13A0E9009CD75C /* DCAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAnimation.h; sourceTree = "<group>"; };
+		7D477E9A1A13A0E9009CD75C /* DCAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAnimation.m; sourceTree = "<group>"; };
+		7D54FCA21A1536AA00F8BF93 /* anatanokoe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anatanokoe.png; sourceTree = "<group>"; };
+		7D54FCA41A15447100F8BF93 /* 2Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "2Launch Screen.xib"; sourceTree = "<group>"; };
+		7D5B5CFF1A132A760003E3AE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +165,7 @@
 				070D26431A11A148000C753B /* teamAI_KOEGINKOU */,
 				070D26601A11A149000C753B /* teamAI_KOEGINKOUTests */,
 				070D26421A11A148000C753B /* Products */,
+				7D477E981A13A0E9009CD75C /* Classes */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +181,7 @@
 		070D26431A11A148000C753B /* teamAI_KOEGINKOU */ = {
 			isa = PBXGroup;
 			children = (
+				070D26511A11A148000C753B /* Main.storyboard */,
 				070D267D1A11A2AB000C753B /* CustomAnnotation.h */,
 				070D267E1A11A2AB000C753B /* CustomAnnotation.m */,
 				070D26481A11A148000C753B /* AppDelegate.h */,
@@ -181,14 +192,14 @@
 				070D264F1A11A148000C753B /* SecondViewController.m */,
 				070D26801A11A39D000C753B /* bunkanomoriViewController.h */,
 				070D26811A11A39D000C753B /* bunkanomoriViewController.m */,
-				070D26831A11A3D1000C753B /* bizanViewController.h */,
-				070D26841A11A3D1000C753B /* bizanViewController.m */,
 				070D26861A11A40B000C753B /* tokushimajoukouenViewController.h */,
 				070D26871A11A40B000C753B /* tokushimajoukouenViewController.m */,
-				070D26511A11A148000C753B /* Main.storyboard */,
+				070D26831A11A3D1000C753B /* bizanViewController.h */,
+				070D26841A11A3D1000C753B /* bizanViewController.m */,
 				077106E01A11B88C00C88B9A /* toukouViewController.h */,
 				077106E11A11B88C00C88B9A /* toukouViewController.m */,
 				070D26541A11A148000C753B /* Images.xcassets */,
+				7D54FCA41A15447100F8BF93 /* 2Launch Screen.xib */,
 				070D26561A11A148000C753B /* LaunchScreen.xib */,
 				070D26441A11A148000C753B /* Supporting Files */,
 			);
@@ -198,6 +209,8 @@
 		070D26441A11A148000C753B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7D54FCA21A1536AA00F8BF93 /* anatanokoe.png */,
+				7D5B5CFF1A132A760003E3AE /* Default-568h@2x.png */,
 				077106DE1A11B76E00C88B9A /* washi01.jpg */,
 				077106DC1A11B63600C88B9A /* ikkuyomu.png */,
 				077106DA1A11B3EB00C88B9A /* yarinaosu.png */,
@@ -237,6 +250,15 @@
 				070D26621A11A149000C753B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7D477E981A13A0E9009CD75C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7D477E991A13A0E9009CD75C /* DCAnimation.h */,
+				7D477E9A1A13A0E9009CD75C /* DCAnimation.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +310,7 @@
 				TargetAttributes = {
 					070D26401A11A148000C753B = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = ALGGF43MAA;
 					};
 					070D265C1A11A149000C753B = {
 						CreatedOnToolsVersion = 6.1;
@@ -320,11 +343,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				070D268E1A11A46A000C753B /* 2-1.png in Resources */,
+				7D5B5D001A132A760003E3AE /* Default-568h@2x.png in Resources */,
 				077106DF1A11B76E00C88B9A /* washi01.jpg in Resources */,
 				070D26901A11A473000C753B /* haiku2.png in Resources */,
 				077106CF1A11B3B800C88B9A /* kuwokakunin.png in Resources */,
 				077106D71A11B3DC00C88B9A /* ba.png in Resources */,
+				7D54FCA31A1536AA00F8BF93 /* anatanokoe.png in Resources */,
 				070D26531A11A148000C753B /* Main.storyboard in Resources */,
+				7D54FCA51A15447100F8BF93 /* 2Launch Screen.xib in Resources */,
 				077106DB1A11B3EB00C88B9A /* yarinaosu.png in Resources */,
 				077106CB1A11B3A700C88B9A /* setsumei.png in Resources */,
 				077106D51A11B3D300C88B9A /* yomu.png in Resources */,
@@ -361,6 +387,7 @@
 				070D26821A11A39D000C753B /* bunkanomoriViewController.m in Sources */,
 				070D267F1A11A2AB000C753B /* CustomAnnotation.m in Sources */,
 				070D26501A11A148000C753B /* SecondViewController.m in Sources */,
+				7D477E9B1A13A0E9009CD75C /* DCAnimation.m in Sources */,
 				070D26851A11A3D2000C753B /* bizanViewController.m in Sources */,
 				070D264A1A11A148000C753B /* AppDelegate.m in Sources */,
 				070D264D1A11A148000C753B /* FirstViewController.m in Sources */,
@@ -487,7 +514,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = teamAI_KOEGINKOU/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -497,7 +526,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = teamAI_KOEGINKOU/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

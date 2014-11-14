@@ -21,4 +21,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *bizanTourokuImage;
 @property (weak, nonatomic) IBOutlet UIButton *bunkanomoriTourokuImage;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *tokushimaParkLabel;
+@property (weak, nonatomic) IBOutlet UILabel *mtBizanLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *bunkaNoMori;
+
+
+
+
+
 @end
