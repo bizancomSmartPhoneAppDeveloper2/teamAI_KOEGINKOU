@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "teamAI_KOEGINKOU/SecondViewController.m"
-            timestampString = "437379450.514624"
+            timestampString = "437627895.928609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-rokuonListen:"
             landmarkType = "5">
          </BreakpointContent>
