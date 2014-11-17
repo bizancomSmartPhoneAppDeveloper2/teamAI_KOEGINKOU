@@ -161,7 +161,7 @@
         NSString *numstr = [[NSString alloc]initWithData:urldata encoding:NSUTF8StringEncoding];
         NSLog(@"番号%@",numstr);
         number = [numstr intValue];
-        NSLog(@"徳島吟行地のテーブルのカウント数%ld",number);
+        NSLog(@"徳島吟行地のテーブルのカウント数%ld",(long)number);
         
         updateURL = @"http://sayaka-sawada.main.jp/keijiban/listen_dengoe.php";
         now_number = number;
@@ -240,15 +240,15 @@
     //送るファイル名をsaple.mp3と設定
     now_number++;
     
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"sample\"; filename=\"%ldsample.mp3\"\r\n",now_number]  dataUsingEncoding:NSUTF8StringEncoding]];
-    filename = [NSString stringWithFormat:@"%ldsample.mp3",now_number];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"sample\"; filename=\"%ldsample.mp3\"\r\n",(long)now_number]  dataUsingEncoding:NSUTF8StringEncoding]];
+    filename = [NSString stringWithFormat:@"%ldsample.mp3",(long)now_number];
     
-    NSLog(@"%ld",now_number);
+    NSLog(@"%ld",(long)now_number);
     //送るファイルのデータのタイプを設定する情報を追加
     [body appendData:[@"Content-Type: audio/mpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     //音楽ファイルのデータを追加
     [body appendData:musicdata];
-    NSLog(@"録音のデータサイズ%ldバイト",musicdata.length);
+    NSLog(@"録音のデータサイズ%ldバイト",(unsigned long)musicdata.length);
     //最後にバウンダリ文字列を追加
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     //ヘッダContent-typeに情報を追加
@@ -265,11 +265,11 @@
 }
 
 -(void)rokuonStartHidden{
-     NSLog(@"%ldaaaaaa%@",(inRejon.count),[inRejon objectAtIndex:0]);
+     NSLog(@"%ldaaaaaa%@",(unsigned long)(inRejon.count),[inRejon objectAtIndex:0]);
     
     //領域内のボタンが押された場合はWebViewに遷移
     for (int i = 0; i < inRejon.count; i++) {
-        NSLog(@"%ldaaaaaa%@",(inRejon.count),[inRejon objectAtIndex:0]);
+        NSLog(@"%ldaaaaaa%@",(unsigned long)(inRejon.count),[inRejon objectAtIndex:0]);
         
         if ([inRejon containsObject:@"徳島城公園:吟行地"])
         {

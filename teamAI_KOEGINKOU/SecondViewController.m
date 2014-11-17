@@ -64,12 +64,12 @@
                 [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
             }
             if(error){
-            NSLog(@"audioSession: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
+            NSLog(@"audioSession: %@ %ld %@", [error domain], (long)[error code], [[error userInfo] description]);
             }
             // 録音機能をアクティブにする
             [audioSession setActive:YES error:&error];
             if(error){
-                NSLog(@"audioSession: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
+                NSLog(@"audioSession: %@ %ld %@", [error domain], (long)[error code], [[error userInfo] description]);
             }
         
             // 録音ファイルパス
@@ -163,7 +163,7 @@
     //アニメーション秒数と目標スケール値を指定
     [dcAnimation scale:self.rokuonStartStopImage
               duration:1.5f
-              aimScale:2.0f];
+              aimScale:1.3f];
     
 }
 
