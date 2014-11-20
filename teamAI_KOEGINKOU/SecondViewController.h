@@ -16,6 +16,9 @@
 - (IBAction)rokuonListen:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *rokuonStartStopImage;
 @property (weak, nonatomic) IBOutlet UIButton *kuwokakunin;
+@property (weak, nonatomic) IBOutlet UILabel *recoding;
+- (IBAction)remindIkku:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *reminIkku2;
 
 @end
 

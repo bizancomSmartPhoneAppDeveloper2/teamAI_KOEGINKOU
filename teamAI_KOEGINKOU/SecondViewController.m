@@ -29,10 +29,17 @@
     NSMutableArray *inRejon;
     NSMutableArray *buttonTitleArray;
     NSTimer *timer;
+    
+    
+    
+    
 }
 
 
 - (void)viewDidLoad {
+    
+    self.recoding.hidden = YES;
+    self.reminIkku2.hidden = YES;
     [self plaYikku];
     rokuonStarting = NO;
     [super viewDidLoad];
@@ -99,6 +106,9 @@
                 return;
             }
             //録音開始
+            self.recoding.hidden = NO;//録音中を表示させる
+            [self blinkImage:_recoding];//録音中を点滅
+
             [avRecorder record];
             rokuonStarting = YES;
         }
@@ -116,6 +126,9 @@
         
             //録音をやめる
             [avRecorder stop];
+            self.recoding.hidden = YES;//録音中をラベルを非表示
+            self.reminIkku2.hidden = NO;//一句残すのアイコンを表示
+
             rokuonStarting = NO;
             NSArray *filePaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                  NSUserDomainMask,YES);
@@ -174,7 +187,7 @@
     //アニメーション秒数と目標スケール値を指定
     [dcAnimation scale:self.kuwokakunin
               duration:1.5f
-              aimScale:2.0f];
+              aimScale:1.3f];
     
 }
 
@@ -185,6 +198,33 @@
 }
 
 
+
+
+//
+//-(void)flashingLabel
+//{
+//[UIView animateWithDuration: 0.5
+//                      delay: 0.0
+//                    options: UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
+//                 animations: ^{struct label.alpha = 3}
+//                 completion: ^(BOOL finished){struct label.alpha = 1];
+//
+//}
+
+ 
+ 
+ //点滅するための
+- (void)blinkImage:(UIView *)target {
+     CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+     animation.duration = 1.4f;
+     animation.autoreverses = YES;
+    
+    //animation.repeatCount =
+     animation.repeatCount = 8; //infinite loop -> HUGE_VAL
+     animation.fromValue = [NSNumber numberWithFloat:1.0f]; //MAX opacity
+     animation.toValue = [NSNumber numberWithFloat:0.0f]; //MIN opacity
+     [target.layer addAnimation:animation forKey:@"blink"];
+ }
 
 
 @end

@@ -75,12 +75,12 @@
     inRejon = [NSMutableArray array];
     
     // 200mの範囲円を追加
-    circleTokushimaeki = [MKCircle circleWithCenterCoordinate:coTokushimajoukouen radius: 2000.0];
-    circleBizan =        [MKCircle circleWithCenterCoordinate:coBizan             radius: 2000.0];
-    circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 2000.0];
+    circleTokushimaeki = [MKCircle circleWithCenterCoordinate:coTokushimajoukouen radius: 1500];
+    circleBizan =        [MKCircle circleWithCenterCoordinate:coBizan             radius: 200];
+    circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 200];
     //[self getObject];
     //[self defaultMapSettei];
-    CLLocationDistance radiusOnMeter = 2000.0;
+    CLLocationDistance radiusOnMeter = 300;
     
     grRegionTokushimaeki = [[CLCircularRegion alloc] initWithCenter:coTokushimajoukouen radius:radiusOnMeter identifier:@"徳島城公園:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionTokushimaeki];
@@ -257,7 +257,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
     
     //地図の縮尺を設定、coを中心に1000m四方で設定
-    self.map.region = MKCoordinateRegionMakeWithDistance(co, 10000, 10000);
+    self.map.region = MKCoordinateRegionMakeWithDistance(co, 3500, 3500);
     //区画内の建物表示プロパティ、初期値NO
     [self.map setShowsBuildings:YES];
     //コンビニなどランドマークの表示プロパティ、初期値NO
@@ -294,8 +294,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     tsurugisan_number = [tsurugisan_numstr intValue];
     
     //緯度と経度情報を格納
-    coBizan.latitude = 34.061101;
-    coBizan.longitude = 134.516636;
+    coBizan.latitude = 34.067520;
+    coBizan.longitude = 134.537276;
     //coを元にsampleannotetion型の変数を生成
     CustomAnnotation *annotetion = [[CustomAnnotation alloc]initwithCoordinate:coBizan];
     annotetion.title = @"眉山:吟行地";
@@ -304,16 +304,16 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
     
     //緯度と経度情報を格納する変数の値を変更
-    coTokushimajoukouen.latitude = 34.076229;
-    coTokushimajoukouen.longitude = 134.556612;
+    coTokushimajoukouen.latitude = 34.075059;
+    coTokushimajoukouen.longitude = 134.555270;
     //coを元にannotetion型の2つめの変数を生成
     CustomAnnotation *annotetion2 = [[CustomAnnotation alloc]initwithCoordinate:coTokushimajoukouen];
     annotetion2.title = @"徳島城公園:吟行地";
     annotetion2.subtitle = [NSString stringWithFormat:@"%ld句の登録があります",(long)number];
     
     //緯度と経度情報を格納する変数の値を変更
-    coBunkanomori.latitude = 34.044114;
-    coBunkanomori.longitude = 134.543109;
+    coBunkanomori.latitude = 34.038828;
+    coBunkanomori.longitude = 134.525660;
     //coを元にannotetion型の2つめの変数を生成
     CustomAnnotation *annotetion3 = [[CustomAnnotation alloc]initwithCoordinate:coBunkanomori];
     annotetion3.title = @"文化の森:吟行地";
@@ -333,9 +333,9 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
 {
     MKCircle* circle = overlay;
     MKCircleView* circleOverlayView =   [[MKCircleView alloc] initWithCircle:circle];
-    circleOverlayView.strokeColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
+    circleOverlayView.strokeColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
     circleOverlayView.lineWidth = 4.;
-    circleOverlayView.fillColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.35];
+    circleOverlayView.fillColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
     return circleOverlayView;
 }
 

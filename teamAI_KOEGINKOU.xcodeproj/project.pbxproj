@@ -57,6 +57,7 @@
 		7DA5D62E1A15CCD400F44719 /* 29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DA5D62A1A15CCD400F44719 /* 29@3x.png */; };
 		7DA5D62F1A15CCD400F44719 /* 40@2Xx.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DA5D62B1A15CCD400F44719 /* 40@2Xx.png */; };
 		7DA5D6301A15CCD400F44719 /* 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DA5D62C1A15CCD400F44719 /* 60@2x.png */; };
+		7DB32D461A1CD48200E21A21 /* tyuui.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DB32D451A1CD48200E21A21 /* tyuui.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		7DA5D62A1A15CCD400F44719 /* 29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29@3x.png"; sourceTree = "<group>"; };
 		7DA5D62B1A15CCD400F44719 /* 40@2Xx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40@2Xx.png"; sourceTree = "<group>"; };
 		7DA5D62C1A15CCD400F44719 /* 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60@2x.png"; sourceTree = "<group>"; };
+		7DB32D451A1CD48200E21A21 /* tyuui.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tyuui.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,19 +167,10 @@
 		070D26381A11A148000C753B = {
 			isa = PBXGroup;
 			children = (
-				077106E31A11DF6700C88B9A /* QuartzCore.framework */,
-				070D267B1A11A262000C753B /* AudioToolbox.framework */,
-				070D26791A11A257000C753B /* AVFoundation.framework */,
-				070D26771A11A245000C753B /* CoreLocation.framework */,
-				070D26751A11A23D000C753B /* CoreGraphics.framework */,
-				070D26731A11A210000C753B /* Foundation.framework */,
-				070D26711A11A201000C753B /* MapKit.framework */,
-				070D266F1A11A1F5000C753B /* SystemConfiguration.framework */,
-				070D266D1A11A1E7000C753B /* MobileCoreServices.framework */,
 				070D26431A11A148000C753B /* teamAI_KOEGINKOU */,
 				070D26601A11A149000C753B /* teamAI_KOEGINKOUTests */,
 				070D26421A11A148000C753B /* Products */,
-				7D477E981A13A0E9009CD75C /* Classes */,
+				7DE14B991A1C846A0005430A /* Framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,6 +220,7 @@
 		070D26441A11A148000C753B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7DB32D451A1CD48200E21A21 /* tyuui.png */,
 				7D54FCA21A1536AA00F8BF93 /* anatanokoe.png */,
 				7D5B5CFF1A132A760003E3AE /* Default-568h@2x.png */,
 				077106DE1A11B76E00C88B9A /* washi01.jpg */,
@@ -277,6 +271,23 @@
 				7D477E9A1A13A0E9009CD75C /* DCAnimation.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		7DE14B991A1C846A0005430A /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				7D477E981A13A0E9009CD75C /* Classes */,
+				077106E31A11DF6700C88B9A /* QuartzCore.framework */,
+				070D267B1A11A262000C753B /* AudioToolbox.framework */,
+				070D26791A11A257000C753B /* AVFoundation.framework */,
+				070D26771A11A245000C753B /* CoreLocation.framework */,
+				070D26751A11A23D000C753B /* CoreGraphics.framework */,
+				070D26731A11A210000C753B /* Foundation.framework */,
+				070D26711A11A201000C753B /* MapKit.framework */,
+				070D266F1A11A1F5000C753B /* SystemConfiguration.framework */,
+				070D266D1A11A1E7000C753B /* MobileCoreServices.framework */,
+			);
+			name = Framework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +373,7 @@
 			files = (
 				070D268E1A11A46A000C753B /* 2-1.png in Resources */,
 				7D5B5D001A132A760003E3AE /* Default-568h@2x.png in Resources */,
+				7DB32D461A1CD48200E21A21 /* tyuui.png in Resources */,
 				077106DF1A11B76E00C88B9A /* washi01.jpg in Resources */,
 				070D26901A11A473000C753B /* haiku2.png in Resources */,
 				7DA5D62D1A15CCD400F44719 /* 29@2x.png in Resources */,
