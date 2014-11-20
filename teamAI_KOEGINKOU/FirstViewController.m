@@ -18,20 +18,16 @@
 @interface FirstViewController ()
 @end
 
-@implementation FirstViewController{
+@implementation FirstViewController
+{
     CLLocationDegrees latitude;
     CLLocationDegrees longitude;
     CLLocationCoordinate2D co;
     CLLocationCoordinate2D coTokushimajoukouen;
     CLLocationCoordinate2D coBizan;
     CLLocationCoordinate2D coBunkanomori;
-    NSString *urlstr;
-    NSURL *url;
-    NSURLRequest *request;
-    NSData *data;
-    NSString *name;
-    AVAudioSession *audioSession;
-    AVAudioPlayer *avPlayer;
+
+
     MKCircle *circleTokushimaeki;
     MKCircle *circleBizan;
     MKCircle *circleTsurugisan;
@@ -41,9 +37,28 @@
     CLRegion *grRegionTsurugisan;
     NSMutableArray *inRejon;
     NSString *nsstringInRejon;
+    
+    UIView *_StartUpUIView;//説明文を書く
+    NSArray *DescImage;
+    int ID;
 }
 
 @synthesize locationManager;
+@synthesize StartUpUIView;
+
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+   //[self checkFirstStartUp];
+    [super viewWillAppear:animated];
+    
+    
+    
+}
+
+
+
 
 - (void)viewDidLoad {
     [self newAnnotation];
@@ -62,24 +77,30 @@
     inRejon = [NSMutableArray array];
     
     // 200mの範囲円を追加
-    circleTokushimaeki = [MKCircle circleWithCenterCoordinate:coTokushimajoukouen radius: 2000.0];
-    circleBizan = [MKCircle circleWithCenterCoordinate:coBizan radius: 2000.0];
-    circleTsurugisan = [MKCircle circleWithCenterCoordinate:coBunkanomori radius: 2000.0];
+    circleTokushimaeki = [MKCircle circleWithCenterCoordinate:coTokushimajoukouen radius: 1500];
+    circleBizan =        [MKCircle circleWithCenterCoordinate:coBizan             radius: 200];
+    circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 200];
     //[self getObject];
     //[self defaultMapSettei];
-    CLLocationDistance radiusOnMeter = 2000.0;
+    CLLocationDistance radiusOnMeter = 300;
     
-    grRegionTokushimaeki = [[CLRegion alloc] initCircularRegionWithCenter:coTokushimajoukouen radius:radiusOnMeter identifier:@"徳島城公園:吟行地"];
+    grRegionTokushimaeki = [[CLCircularRegion alloc] initWithCenter:coTokushimajoukouen radius:radiusOnMeter identifier:@"徳島城公園:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionTokushimaeki];
     
-    grRegionBizan = [[CLRegion alloc] initCircularRegionWithCenter:coBizan radius:radiusOnMeter identifier:@"眉山:吟行地"];
+    grRegionBizan = [[CLCircularRegion alloc] initWithCenter:coBizan radius:radiusOnMeter identifier:@"眉山:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionBizan];
     
-    grRegionTsurugisan = [[CLRegion alloc] initCircularRegionWithCenter:coBunkanomori radius:radiusOnMeter identifier:@"文化の森:吟行地"];
+    grRegionTsurugisan = [[CLCircularRegion alloc] initWithCenter:coBunkanomori radius:radiusOnMeter identifier:@"文化の森:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionTsurugisan];
     
     self.rejonLabel.numberOfLines = 4;
     self.rejonLabel.hidden = YES;
+    
+    
+    //説明の画面表示
+    ID = 0;
+    DescImage = @[@"ginkou.png",@"katyou.png",@"wa2.png"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -238,7 +259,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
     
     //地図の縮尺を設定、coを中心に1000m四方で設定
-    self.map.region = MKCoordinateRegionMakeWithDistance(co, 10000, 10000);
+    self.map.region = MKCoordinateRegionMakeWithDistance(co, 3500, 3500);
     //区画内の建物表示プロパティ、初期値NO
     [self.map setShowsBuildings:YES];
     //コンビニなどランドマークの表示プロパティ、初期値NO
@@ -275,30 +296,30 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     tsurugisan_number = [tsurugisan_numstr intValue];
     
     //緯度と経度情報を格納
-    coBizan.latitude = 34.061101;
-    coBizan.longitude = 134.516636;
+    coBizan.latitude = 34.067520;
+    coBizan.longitude = 134.537276;
     //coを元にsampleannotetion型の変数を生成
     CustomAnnotation *annotetion = [[CustomAnnotation alloc]initwithCoordinate:coBizan];
     annotetion.title = @"眉山:吟行地";
-    annotetion.subtitle = [NSString stringWithFormat:@"%d句の登録があります",bizan_number];
+    annotetion.subtitle = [NSString stringWithFormat:@"%ld句の登録があります",(long)bizan_number];
     
     
     
     //緯度と経度情報を格納する変数の値を変更
-    coTokushimajoukouen.latitude = 34.076229;
-    coTokushimajoukouen.longitude = 134.556612;
+    coTokushimajoukouen.latitude = 34.075059;
+    coTokushimajoukouen.longitude = 134.555270;
     //coを元にannotetion型の2つめの変数を生成
     CustomAnnotation *annotetion2 = [[CustomAnnotation alloc]initwithCoordinate:coTokushimajoukouen];
     annotetion2.title = @"徳島城公園:吟行地";
-    annotetion2.subtitle = [NSString stringWithFormat:@"%d句の登録があります",number];
+    annotetion2.subtitle = [NSString stringWithFormat:@"%ld句の登録があります",(long)number];
     
     //緯度と経度情報を格納する変数の値を変更
-    coBunkanomori.latitude = 34.044114;
-    coBunkanomori.longitude = 134.543109;
+    coBunkanomori.latitude = 34.038828;
+    coBunkanomori.longitude = 134.525660;
     //coを元にannotetion型の2つめの変数を生成
     CustomAnnotation *annotetion3 = [[CustomAnnotation alloc]initwithCoordinate:coBunkanomori];
     annotetion3.title = @"文化の森:吟行地";
-    annotetion3.subtitle = [NSString stringWithFormat:@"%d句の登録があります",tsurugisan_number];
+    annotetion3.subtitle = [NSString stringWithFormat:@"%ld句の登録があります",(long)tsurugisan_number];
     
     //2つアノテーションを追加
     [self.map addAnnotation:annotetion];
@@ -314,9 +335,9 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
 {
     MKCircle* circle = overlay;
     MKCircleView* circleOverlayView =   [[MKCircleView alloc] initWithCircle:circle];
-    circleOverlayView.strokeColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
+    circleOverlayView.strokeColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
     circleOverlayView.lineWidth = 4.;
-    circleOverlayView.fillColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.35];
+    circleOverlayView.fillColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
     return circleOverlayView;
 }
 
@@ -404,5 +425,45 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
 
 - (IBAction)goBackHome:(UIStoryboardSegue *)segue{
 }
+
+
+
+//初期起動時に説明文を隠すか表すか判定する。
+- (void)descriptionImg {
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    if (appDelegate.saveint == 0) {
+        _StartUpUIImages.image = [UIImage imageNamed:@"katyou.png"];
+        StartUpUIView.hidden = NO;
+        
+    }
+    else
+    {
+        _StartUpUIImages.image = nil;
+        StartUpUIView.hidden = YES;
+        
+    }
+    
+}
+
+//説明文のイメージを表示するボタン
+- (IBAction)forDescription:(id)sender
+{
+
+    ID++;
+    if(DescImage.count <= ID)
+    {
+        ID = 0;
+    }
+    [self.StartUpUIImages setImage:[UIImage imageNamed:[DescImage objectAtIndex:ID]]];
+
+}
+
+
+//説明文を隠すボタン
+-(void)closeStartUpView
+{
+    StartUpUIView.hidden = YES;
+}
+
 
 @end

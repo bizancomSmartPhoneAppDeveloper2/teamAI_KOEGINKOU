@@ -8,6 +8,7 @@
 
 #import "SecondViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DCAnimation.h"
 
 
 @interface SecondViewController ()
@@ -28,16 +29,27 @@
     NSMutableArray *inRejon;
     NSMutableArray *buttonTitleArray;
     NSTimer *timer;
+    
+    
+    
+    
 }
 
 
 - (void)viewDidLoad {
+    
+    self.recoding.hidden = YES;
+    self.reminIkku2.hidden = YES;
+    [self plaYikku];
     rokuonStarting = NO;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.rokuonStartStopImage.alpha = 0.3;
+//    self.rokuonStartStopImage.alpha = 0.3;
     //self.kuwokakunin.alpha = 0.3;
     number = 0;
+    
+    //録音したボタンを最初の段階で隠している。
+    self.kuwokakunin.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,6 +60,9 @@
 - (IBAction)rokuonStart:(UIButton *)sender {
     [self rokuon];
 }
+
+
+
 
 - (IBAction)rokuonListen:(UIButton *)sender {
     if(avPlayer.playing == NO){
@@ -61,7 +76,7 @@
                                                              NSUserDomainMask,YES);
     NSString *documentDir = [filePaths objectAtIndex:0];
     //rec.wavファイルがあるパスの文字列を格納
-    NSString *path = [documentDir stringByAppendingPathComponent:@"rec.wav"];
+    path = [documentDir stringByAppendingPathComponent:@"rec.wav"];
     NSURL *recordingURL = [NSURL fileURLWithPath:path];
     
     avPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:recordingURL error:nil];

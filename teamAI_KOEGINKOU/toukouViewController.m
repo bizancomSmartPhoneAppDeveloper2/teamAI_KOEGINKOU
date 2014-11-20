@@ -11,6 +11,7 @@
 #import "tokushimajoukouenViewController.h"
 #import "bunkanomoriViewController.h"
 #import "bizanViewController.h"
+#import "FirstViewController.h"
 
 @interface toukouViewController ()
 
@@ -24,9 +25,11 @@
     NSMutableArray *inRejon;
     NSMutableArray *buttonTitleArray;
     NSString *userNameString;
-    NSURL *updateURL;
+    NSString *updateURL;
     NSString *path;
     NSString *filename;
+    
+    NSTimer *timeTimer;
 }
 
 - (void)viewDidLoad {
@@ -38,7 +41,10 @@
     
     self.myTextField.delegate = self;
     
-    
+    self.tokushimaParkLabel.hidden = YES;
+    self.mtBizanLabel.hidden = YES;
+    self.bunkaNoMori.hidden = YES;
+
     //配列を空で生成
     inRejon = [NSMutableArray array];
     
@@ -46,7 +52,8 @@
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate]; // デリゲート呼び出し
     inRejon = appDelegate.didRejon;
     NSLog(@"nnnnnnnnn%@",inRejon[0]);
-    [self rokuonStartHidden];
+    
+   [self rokuonStartHidden];
     
     buttonTitleArray = [NSMutableArray array];
     buttonTitleArray =
@@ -71,7 +78,7 @@
 - (IBAction)bizantourokuButton:(UIButton *)sender {
     if (userNameString == nil) {
         [[[UIAlertView alloc] initWithTitle:@"エラー"
-                                    message:@"登録文を入力してください"
+                                    message:@"名前を入力してください"
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
@@ -105,7 +112,7 @@
 - (IBAction)bunkanomoritourokuButton:(UIButton *)sender {
     if (userNameString == nil) {
         [[[UIAlertView alloc] initWithTitle:@"エラー"
-                                    message:@"登録文を入力してください"
+                                    message:@"名前を入力してください"
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
@@ -129,7 +136,7 @@
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
-        
+        [self usetimer];
         
         //webViewに遷移
         bunkanomoriViewController *bunkanomori_webView = [self.storyboard instantiateViewControllerWithIdentifier:@"bunkanomoriWebView"];
@@ -140,7 +147,7 @@
 - (IBAction)tokushimajoukouentourokuButton:(UIButton *)sender {
     if (userNameString == nil) {
         [[[UIAlertView alloc] initWithTitle:@"エラー"
-                                    message:@"登録文を入力してください"
+                                    message:@"名前を入力してください"
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
@@ -154,7 +161,7 @@
         NSString *numstr = [[NSString alloc]initWithData:urldata encoding:NSUTF8StringEncoding];
         NSLog(@"番号%@",numstr);
         number = [numstr intValue];
-        NSLog(@"徳島吟行地のテーブルのカウント数%ld",number);
+        NSLog(@"徳島吟行地のテーブルのカウント数%ld",(long)number);
         
         updateURL = @"http://sayaka-sawada.main.jp/keijiban/listen_dengoe.php";
         now_number = number;
@@ -233,15 +240,15 @@
     //送るファイル名をsaple.mp3と設定
     now_number++;
     
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"sample\"; filename=\"%ldsample.mp3\"\r\n",now_number]  dataUsingEncoding:NSUTF8StringEncoding]];
-    filename = [NSString stringWithFormat:@"%ldsample.mp3",now_number];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"sample\"; filename=\"%ldsample.mp3\"\r\n",(long)now_number]  dataUsingEncoding:NSUTF8StringEncoding]];
+    filename = [NSString stringWithFormat:@"%ldsample.mp3",(long)now_number];
     
-    NSLog(@"%ld",now_number);
+    NSLog(@"%ld",(long)now_number);
     //送るファイルのデータのタイプを設定する情報を追加
     [body appendData:[@"Content-Type: audio/mpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     //音楽ファイルのデータを追加
     [body appendData:musicdata];
-    NSLog(@"録音のデータサイズ%ldバイト",musicdata.length);
+    NSLog(@"録音のデータサイズ%ldバイト",(unsigned long)musicdata.length);
     //最後にバウンダリ文字列を追加
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     //ヘッダContent-typeに情報を追加
@@ -258,28 +265,61 @@
 }
 
 -(void)rokuonStartHidden{
-     NSLog(@"%ldaaaaaa%@%@",(inRejon.count),[inRejon objectAtIndex:0],[inRejon objectAtIndex:1]);
+     NSLog(@"%ldaaaaaa%@",(unsigned long)(inRejon.count),[inRejon objectAtIndex:0]);
     
     //領域内のボタンが押された場合はWebViewに遷移
     for (int i = 0; i < inRejon.count; i++) {
-        NSLog(@"%ldaaaaaa%@%@",(inRejon.count),[inRejon objectAtIndex:0],[inRejon objectAtIndex:1]);
+        NSLog(@"%ldaaaaaa%@",(unsigned long)(inRejon.count),[inRejon objectAtIndex:0]);
         
-        if ([inRejon containsObject:@"徳島城公園:吟行地"]) {
+        if ([inRejon containsObject:@"徳島城公園:吟行地"])
+        {
             self.tokushimajoukouenTourokuImage.hidden = NO;
-        }else{
+            self.tokushimaParkLabel.hidden = NO;
+            
+        }
+        else
+        {
             nil;
         }
-        if ([inRejon containsObject:@"眉山:吟行地"]) {
+        if ([inRejon containsObject:@"眉山:吟行地"])
+        {
             self.bizanTourokuImage.hidden = NO;
-        }else{
+            self.mtBizanLabel.hidden = NO;
+            
+        }
+        else
+        {
             nil;
         }
-        if ([inRejon containsObject:@"文化の森:吟行地"]) {
+        if ([inRejon containsObject:@"文化の森:吟行地"])
+        {
             self.bunkanomoriTourokuImage.hidden = NO;
-        }else{
+            self.bunkaNoMori.hidden = NO;
+        }
+        else
+        {
             nil;
         }
     }
 }
+
+
+-(void)usetimer
+{
+
+//タイマーをセット
+timeTimer =[NSTimer scheduledTimerWithTimeInterval:5
+                                      target:self
+                                    selector:@selector(nextPage:)
+                                    userInfo:nil
+                                     repeats:NO];
+}
+
+-(void)nextPage:(NSTimer*)timer{
+    FirstViewController * newView = [[ FirstViewController alloc] initWithNibName:@"2Launch Screen" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:newView animated:YES];
+    [timeTimer invalidate];
+}
+
 
 @end
