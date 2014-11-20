@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 ビザンコムマック０４. All rights reserved.
 //
 
+//コミット対応
 #import "FirstViewController.h"
 #import "CustomAnnotation.h"
 #import "tokushimajoukouenViewController.h"
