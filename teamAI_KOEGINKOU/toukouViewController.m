@@ -183,12 +183,18 @@
 - (IBAction)tourokubunField:(UITextField *)sender {
 }
 
+//キーボードに”改行”から”完了”の文字に変えた
+-(BOOL)textFieldShouldBeginEditing:
+(UITextField*)textField
+{
+    textField.returnKeyType = UIReturnKeyDone;
+    return YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self.view endEditing:YES];
     userNameString = self.myTextField.text;
     NSLog(@"%@",userNameString);
-    textField.returnKeyType = UIReturnKeyDone;
     return NO;
 }
 

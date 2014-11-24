@@ -78,10 +78,10 @@
     // 200mの範囲円を追加
     circleTokushimaeki = [MKCircle circleWithCenterCoordinate:coTokushimajoukouen radius: 1500];
     circleBizan =        [MKCircle circleWithCenterCoordinate:coBizan             radius: 200];
-    circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 200];
+    circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 2000];
     //[self getObject];
     //[self defaultMapSettei];
-    CLLocationDistance radiusOnMeter = 1000;
+    CLLocationDistance radiusOnMeter = 2000;
     
     grRegionTokushimaeki = [[CLCircularRegion alloc] initWithCenter:coTokushimajoukouen radius:radiusOnMeter identifier:@"徳島城公園:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionTokushimaeki];
