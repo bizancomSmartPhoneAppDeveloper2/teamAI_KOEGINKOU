@@ -188,6 +188,7 @@
     [self.view endEditing:YES];
     userNameString = self.myTextField.text;
     NSLog(@"%@",userNameString);
+    textField.returnKeyType = UIReturnKeyDone;
     return NO;
 }
 

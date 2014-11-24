@@ -81,7 +81,7 @@
     circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 200];
     //[self getObject];
     //[self defaultMapSettei];
-    CLLocationDistance radiusOnMeter = 300;
+    CLLocationDistance radiusOnMeter = 1000;
     
     grRegionTokushimaeki = [[CLCircularRegion alloc] initWithCenter:coTokushimajoukouen radius:radiusOnMeter identifier:@"徳島城公園:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionTokushimaeki];
@@ -98,8 +98,13 @@
     
     //説明の画面表示
     ID = 0;
-    DescImage = @[@"ginkou.png",@"katyou.png",@"wa2.png"];
-    
+    DescImage = @[
+                  @"ginkou.png",@"setumei111.png",@"toukou00.png",@"toukou1.png",@"toukou2.png",@"toukou3.png",@"toukou4.png",
+                  @"toukou5.png",@"toukou6.png",@"toukou7.png",@"toukou8.png",@"toukou9.png",
+                  @"toukou10.png",@"toukou11.png",@"toukou13.png",@"toukou12.png",
+                  
+                  @"kiku00.png",@"kiku1.png",@"kiku000",@"kiku7.png",
+                  @"kiku2.png",@"kiku3.png",@"kiku4.png",@"kiku5.png",@"kiku6.png",];
 }
 
 - (void)didReceiveMemoryWarning {

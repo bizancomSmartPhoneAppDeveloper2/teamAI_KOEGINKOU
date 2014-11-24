@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--みなの俳句-->
+        <!--吟行場所-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" sceneMemberID="viewController">
@@ -34,18 +34,19 @@
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="vGL-1p-fIG">
                                 <rect key="frame" x="16" y="20" width="343" height="559"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="katyou.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cph-fi-xiA">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tyuui.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cph-fi-xiA">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="559"/>
                                         <gestureRecognizers/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3u-ne-E43">
                                         <rect key="frame" x="26" y="486" width="72" height="41"/>
-                                        <color key="backgroundColor" red="1" green="0.98286187339999997" blue="0.71905190929999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.17400731863341001" green="1" blue="0.57562364146003953" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="72" id="Qvo-Sx-6vG"/>
                                             <constraint firstAttribute="height" constant="41" id="ybw-pF-gEM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="次へ">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -55,8 +56,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56j-FV-xke">
                                         <rect key="frame" x="243" y="486" width="72" height="41"/>
-                                        <color key="backgroundColor" red="1" green="0.64150928347322189" blue="0.98838913806401829" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.39857724165911512" green="1" blue="0.88069868806232576" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="閉じる">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -92,7 +94,7 @@
                             <constraint firstItem="Uc2-Ai-3v5" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="zxL-kI-rra"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="みなの俳句" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="吟行場所" image="map-35.png" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="StartUpUIImages" destination="Cph-fi-xiA" id="FwP-zr-Ylp"/>
                         <outlet property="StartUpUIView" destination="vGL-1p-fIG" id="7fB-5x-ynA"/>
@@ -209,7 +211,7 @@
                                     <constraint firstAttribute="height" constant="56" id="hsF-RN-gNF"/>
                                     <constraint firstAttribute="width" constant="142" id="nJx-wa-nEm"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="ikkunokosu.png">
+                                <state key="normal" title="Button" image="toukouku">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -274,7 +276,7 @@
                             <constraint firstAttribute="centerX" secondItem="vlF-8W-kcu" secondAttribute="centerX" id="tly-2u-mrt"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="句を投稿" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="句を投稿" image="postercilet-01-40.png" id="cPa-gy-q4n"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -545,13 +547,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
         <image name="haikupost.png" width="280" height="282"/>
-        <image name="ikkunokosu.png" width="406" height="155"/>
         <image name="ikkuyomu.png" width="400" height="400"/>
-        <image name="katyou.png" width="301" height="481"/>
         <image name="kuwokakunin.png" width="400" height="400"/>
-        <image name="second" width="30" height="30"/>
+        <image name="map-35.png" width="35" height="35"/>
+        <image name="postercilet-01-40.png" width="40" height="40"/>
+        <image name="toukouku" width="337" height="124"/>
+        <image name="tyuui.png" width="400" height="640"/>
         <image name="wa2.png" width="301" height="481"/>
         <image name="washi01.jpg" width="641" height="481"/>
     </resources>
