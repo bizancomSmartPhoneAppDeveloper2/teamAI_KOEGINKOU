@@ -191,6 +191,7 @@
     return YES;
 }
 
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self.view endEditing:YES];
     userNameString = self.myTextField.text;
@@ -247,8 +248,8 @@
     //送るファイル名をsaple.mp3と設定
     now_number++;
     
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"sample\"; filename=\"%ldsample.mp3\"\r\n",(long)now_number]  dataUsingEncoding:NSUTF8StringEncoding]];
-    filename = [NSString stringWithFormat:@"%ldsample.mp3",(long)now_number];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"sample\"; filename=\"%ld番目\"\r\n",(long)now_number]  dataUsingEncoding:NSUTF8StringEncoding]];
+    filename = [NSString stringWithFormat:@"%ld番目",(long)now_number];
     
     NSLog(@"%ld",(long)now_number);
     //送るファイルのデータのタイプを設定する情報を追加

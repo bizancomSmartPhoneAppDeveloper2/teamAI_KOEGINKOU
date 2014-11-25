@@ -104,7 +104,7 @@
                   @"toukou10.png",@"toukou11.png",@"toukou13.png",@"toukou12.png",
                   
                   @"kiku00.png",@"kiku1.png",@"kiku000",@"kiku7.png",
-                  @"kiku2.png",@"kiku3.png",@"kiku4.png",@"kiku5.png",@"kiku6.png",];
+                  @"kiku2.png",@"kiku3.png",@"kiku4.png",@"kiku5.png",@"kiku6.png",@"end002.png"];
 }
 
 - (void)didReceiveMemoryWarning {
