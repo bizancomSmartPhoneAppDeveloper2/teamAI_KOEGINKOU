@@ -109,15 +109,20 @@
     }
 }
 
-- (IBAction)bunkanomoritourokuButton:(UIButton *)sender {
-    if (userNameString == nil) {
+- (IBAction)bunkanomoritourokuButton:(UIButton *)sender
+{
+    if (userNameString == nil)
+    {
         [[[UIAlertView alloc] initWithTitle:@"エラー"
                                     message:@"名前を入力してください"
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
+     
         
-    }else {
+    }
+    else
+    {
         
         NSLog(@"文化の森吟行地へ登録クリックされました");
         
@@ -184,8 +189,7 @@
 }
 
 //キーボードに”改行”から”完了”の文字に変えた
--(BOOL)textFieldShouldBeginEditing:
-(UITextField*)textField
+-(BOOL)textFieldShouldBeginEditing:(UITextField*)textField
 {
     textField.returnKeyType = UIReturnKeyDone;
     return YES;
@@ -277,7 +281,9 @@
     
     //領域内のボタンが押された場合はWebViewに遷移
     for (int i = 0; i < inRejon.count; i++) {
-        NSLog(@"%ldaaaaaa%@",(unsigned long)(inRejon.count),[inRejon objectAtIndex:0]);
+        NSLog(@"%ldaaaaaa%@",(unsigned long)(i),[inRejon objectAtIndex:i]);
+        
+        
         
         if ([inRejon containsObject:@"徳島城公園:吟行地"])
         {
