@@ -78,20 +78,25 @@
 
 -(void)rokuon{
     //録音状態でないかどうか
-    if (rokuonStarting == NO) {
+    if (rokuonStarting == NO)
+    {
         self.rokuonStartStopImage.alpha = 1;
         audioSession = [AVAudioSession sharedInstance];
         NSError *error = nil;
         // 使用している機種が録音に対応しているか
-        if ([audioSession inputIsAvailable]) {
+        if ([audioSession inputIsAvailable])
+        {
             [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
         }
-        if(error){
+        if(error)
+        {
             NSLog(@"audioSession: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
         }
+        
         // 録音機能をアクティブにする
         [audioSession setActive:YES error:&error];
-        if(error){
+        if(error)
+        {
             NSLog(@"audioSession: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
         }
         
