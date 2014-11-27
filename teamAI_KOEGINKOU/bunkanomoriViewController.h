@@ -10,4 +10,5 @@
 
 @interface bunkanomoriViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property NSString *urlstr;
 @end

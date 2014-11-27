@@ -168,7 +168,7 @@
         number = [numstr intValue];
         NSLog(@"徳島吟行地のテーブルのカウント数%ld",(long)number);
         
-        updateURL = @"http://sayaka-sawada.main.jp/keijiban/listen_dengoe.php";
+        updateURL = @"http://koeginkou.miraiserver.com/file.php";
         now_number = number;
         [self update];
         
@@ -206,7 +206,13 @@
 
 
 -(void)update{
-    
+    updateURL = @"http://koeginkou.miraiserver.com/file.php";
+    // 録音ファイルパス
+    NSArray *filePaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                             NSUserDomainMask,YES);
+    NSString *documentDir = [filePaths objectAtIndex:0];
+    //rec.wavファイルがあるパスの文字列を格納
+    path = [documentDir stringByAppendingPathComponent:@"rec.wav"];
     //パスからデータを取得
     NSData *musicdata = [[NSData alloc]initWithContentsOfFile:path];
     //ファイルをサーバーにアップするためのプログラムのURLを生成
@@ -221,6 +227,7 @@
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     //POST形式の通信を行うようにする
     [request setHTTPMethod:@"POST"];
+    /*
     //bodyの最初にバウンダリ文字列(仕切線)を追加
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     //サーバー側に送るファイルの項目名をsample
@@ -235,6 +242,7 @@
     [body appendData:[@"Content-Disposition: form-data; name=\"date\"\r\n\r\n"  dataUsingEncoding:NSUTF8StringEncoding]];
     //現在日時の文字列データ追加
     [body appendData:[[NSString stringWithFormat:@"%@\r\n", self.dateString] dataUsingEncoding:NSUTF8StringEncoding]];
+     */
     //bodyの最初にバウンダリ文字列(仕切線)を追加
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -242,7 +250,16 @@
     //送るファイル名をusernameと設定
     [body appendData:[@"Content-Disposition: form-data; name=\"username\"\r\n\r\n"  dataUsingEncoding:NSUTF8StringEncoding]];
     //文字列データ追加
-    [body appendData:[[NSString stringWithFormat:@"%@\r\n", userNameString] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n", self.myTextField.text] dataUsingEncoding:NSUTF8StringEncoding]];
+    //bodyの最初にバウンダリ文字列(仕切線)を追加
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    //送るファイル名をusernameと設定
+    [body appendData:[@"Content-Disposition: form-data; name=\"place\"\r\n\r\n"  dataUsingEncoding:NSUTF8StringEncoding]];
+    NSString *placestr = @"文化の森";
+    //文字列データ追加
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n", placestr] dataUsingEncoding:NSUTF8StringEncoding]];
     //bodyの最初にバウンダリ文字列(仕切線)を追加
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -251,9 +268,8 @@
     //サーバー側に送るファイルの項目名をsample
     //送るファイル名をsaple.mp3と設定
     now_number++;
-    
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"sample\"; filename=\"%ld番目\"\r\n",(long)now_number]  dataUsingEncoding:NSUTF8StringEncoding]];
-    filename = [NSString stringWithFormat:@"%ld番目",(long)now_number];
+    [body appendData:[@"Content-Disposition: form-data; name=\"sample\"; filename=\"sample.mp3\"\r\n"  dataUsingEncoding:NSUTF8StringEncoding]];
+    filename = [NSString stringWithFormat:@"%ldsample.mp3",(long)now_number];
     
     NSLog(@"%ld",(long)now_number);
     //送るファイルのデータのタイプを設定する情報を追加

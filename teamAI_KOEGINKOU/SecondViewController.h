@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *recoding;
 - (IBAction)remindIkku:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *reminIkku2;
+- (IBAction)resetBtn:(id)sender;
+
 
 @end
 

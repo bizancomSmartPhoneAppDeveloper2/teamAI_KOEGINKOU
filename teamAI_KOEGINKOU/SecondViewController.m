@@ -227,4 +227,24 @@
  }
 
 
+
+
+
+-(void)resetRec
+{
+    
+    
+    
+}
+
+
+- (IBAction)resetBtn:(id)sender
+{
+    self.kuwokakunin.hidden = YES;
+    self.rokuonStartStopImage.alpha = 1;
+
+    self.recoding.hidden = YES;
+    self.reminIkku2.hidden = YES;
+    
+}
 @end

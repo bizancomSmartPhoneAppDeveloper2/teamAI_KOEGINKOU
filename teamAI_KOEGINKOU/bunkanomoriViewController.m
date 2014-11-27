@@ -17,7 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURL *tsurugisan_url = [NSURL URLWithString:@"http://sayaka-sawada.main.jp/keijiban/tsurugisan_listen_dengoe.php"];
+    //NSURL *tsurugisan_url = [NSURL URLWithString:@"http://sayaka-sawada.main.jp/keijiban/tsurugisan_listen_dengoe.php"];
+    NSURL *tsurugisan_url = [NSURL URLWithString:self.urlstr];
     NSURLRequest *tsurugisan_request = [NSURLRequest requestWithURL:tsurugisan_url];
     [self.webView loadRequest:tsurugisan_request];
     

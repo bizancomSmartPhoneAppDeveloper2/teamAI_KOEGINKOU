@@ -77,11 +77,11 @@
     
     // 200mの範囲円を追加
     circleTokushimaeki = [MKCircle circleWithCenterCoordinate:coTokushimajoukouen radius: 1500];
-    circleBizan =        [MKCircle circleWithCenterCoordinate:coBizan             radius: 200];
-    circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 2000];
+    circleBizan =        [MKCircle circleWithCenterCoordinate:coBizan             radius: 20];
+    circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 5000];
     //[self getObject];
     //[self defaultMapSettei];
-    CLLocationDistance radiusOnMeter = 2000;
+    CLLocationDistance radiusOnMeter = 10000;
     
     grRegionTokushimaeki = [[CLCircularRegion alloc] initWithCenter:coTokushimajoukouen radius:radiusOnMeter identifier:@"徳島城公園:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionTokushimaeki];
@@ -155,23 +155,38 @@
     
     if ([inRejon containsObject:view.annotation.title]) {
         NSLog(@"入ってます");
+        NSString *urlstr;
         if ([view.annotation.title isEqualToString:@"徳島城公園:吟行地"]) {
-            //webViewに遷移
-            tokushimajoukouenViewController *tokushimajoukouenWebView = [self.storyboard instantiateViewControllerWithIdentifier:@"tokushimajoukouenWebView"];
-            [self presentViewController:tokushimajoukouenWebView animated:YES completion:nil];
-            
-        }else if ([view.annotation.title isEqualToString:@"眉山:吟行地"]) {
-            //webViewに遷移
-            bizanViewController *bizan_webView = [self.storyboard instantiateViewControllerWithIdentifier:@"bizanWebView"];
-            [self presentViewController:bizan_webView animated:YES completion:nil];
-            
-        }else if ([view.annotation.title isEqualToString:@"文化の森:吟行地"]) {
-            //webViewに遷移
-            bunkanomoriViewController *bunkanomoriWebView = [self.storyboard instantiateViewControllerWithIdentifier:@"bunkanomoriWebView"];
-            [self presentViewController:bunkanomoriWebView animated:YES completion:nil];
+            //徳島城公園の声をきくURL文字列を格納
+            urlstr = @"http://koeginkou.miraiserver.com/onsei.php?place=";
+            NSString *placestr = @"徳島城公園";
+            NSString *encode = [placestr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
+            urlstr = [urlstr stringByAppendingString:encode];
             
         }
-        
+        else if ([view.annotation.title isEqualToString:@"眉山:吟行地"]) {
+            //webViewに遷移
+            //眉山の声をきくURL文字列を格納
+            urlstr = @"http://koeginkou.miraiserver.com/onsei.php?place=";
+            NSString *placestr = @"眉山";
+            NSString *encode = [placestr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
+            urlstr = [urlstr stringByAppendingString:encode];
+            
+            
+        }else if ([view.annotation.title isEqualToString:@"文化の森:吟行地"]) {
+            
+            //webViewに遷移
+            //眉山の声をきくURL文字列を格納
+            urlstr = @"http://koeginkou.miraiserver.com/onsei.php?place=";
+            NSString *placestr = @"文化の森";
+            NSString *encode = [placestr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
+            urlstr = [urlstr stringByAppendingString:encode];
+            
+            
+        }
+        bunkanomoriViewController *bunkanomoriWebView = [self.storyboard instantiateViewControllerWithIdentifier:@"bunkanomoriWebView"];
+        bunkanomoriWebView.urlstr = urlstr;
+        [self presentViewController:bunkanomoriWebView animated:YES completion:nil];
         
         
         //アノテーションの情報を取得
