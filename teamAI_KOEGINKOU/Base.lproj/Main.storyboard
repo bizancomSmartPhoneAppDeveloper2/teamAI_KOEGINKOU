@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -117,15 +118,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kwl-D5-4aj">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kwl-D5-4aj">
                                 <rect key="frame" x="0.0" y="28" width="375" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 </variation>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGu-GG-W9z">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGu-GG-W9z">
                                 <rect key="frame" x="142" y="629" width="90" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tbL-F3-DpN"/>
+                                    <constraint firstAttribute="width" constant="90" id="z96-QW-Cck"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="戻る">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,6 +141,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kwl-D5-4aj" firstAttribute="leading" secondItem="vO0-4d-6pW" secondAttribute="leading" id="5px-H1-1g3"/>
+                            <constraint firstAttribute="trailing" secondItem="Kwl-D5-4aj" secondAttribute="trailing" id="Iln-KC-zgt"/>
+                            <constraint firstAttribute="centerX" secondItem="qGu-GG-W9z" secondAttribute="centerX" id="K9L-Qr-RR0"/>
+                            <constraint firstItem="Kwl-D5-4aj" firstAttribute="top" secondItem="dnZ-Fj-ks2" secondAttribute="bottom" constant="8" id="Qtf-WP-Jmu"/>
+                            <constraint firstItem="qGu-GG-W9z" firstAttribute="top" secondItem="dnZ-Fj-ks2" secondAttribute="bottom" constant="609" id="RHh-Ks-SvX"/>
+                            <constraint firstItem="xH9-fi-DHK" firstAttribute="top" secondItem="Kwl-D5-4aj" secondAttribute="bottom" constant="49" id="rtd-Vn-uGj"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -145,7 +158,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3B-RW-IHt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="TR3-pM-re3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1691.5" y="-888.5"/>
+            <point key="canvasLocation" x="1684.5" y="-948.5"/>
         </scene>
         <!--Bizan View Controller-->
         <scene sceneID="oKY-82-RFR">
@@ -159,15 +172,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUw-bJ-2Ec">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUw-bJ-2Ec">
                                 <rect key="frame" x="0.0" y="28" width="375" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 </variation>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLe-Tv-irs">
-                                <rect key="frame" x="140" y="629" width="90" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLe-Tv-irs">
+                                <rect key="frame" x="143" y="629" width="90" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="Kfd-Ql-U9v"/>
+                                    <constraint firstAttribute="height" constant="30" id="Ta5-XW-9Bd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="戻る">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -178,6 +195,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="SUw-bJ-2Ec" secondAttribute="trailing" id="Awz-Pm-aI8"/>
+                            <constraint firstItem="PLe-Tv-irs" firstAttribute="top" secondItem="SUw-bJ-2Ec" secondAttribute="bottom" constant="11" id="DhX-dw-T4C"/>
+                            <constraint firstItem="SUw-bJ-2Ec" firstAttribute="leading" secondItem="Zp7-ln-HVe" secondAttribute="leading" id="GOq-fT-eDV"/>
+                            <constraint firstAttribute="centerX" secondItem="PLe-Tv-irs" secondAttribute="centerX" id="Uhr-Vs-Oer"/>
+                            <constraint firstItem="SUw-bJ-2Ec" firstAttribute="top" secondItem="fm8-x0-T6A" secondAttribute="bottom" constant="8" id="aSC-pd-Msg"/>
+                            <constraint firstItem="ofF-g9-QiS" firstAttribute="top" secondItem="PLe-Tv-irs" secondAttribute="bottom" constant="8" id="vPO-zH-OkW"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -310,8 +335,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPD-jp-b5v">
-                                <rect key="frame" x="140" y="629" width="90" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPD-jp-b5v">
+                                <rect key="frame" x="143" y="629" width="90" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="3lh-AZ-f5g"/>
+                                    <constraint firstAttribute="height" constant="30" id="bHl-iS-rRx"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="戻る">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -320,7 +349,7 @@
                                     <segue destination="FDA-PW-XWB" kind="unwind" unwindAction="goBackHome:" id="0DE-wA-SsE"/>
                                 </connections>
                             </button>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k8d-Zd-Yqw">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k8d-Zd-Yqw">
                                 <rect key="frame" x="0.0" y="20" width="375" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=regular" fixedFrame="YES">
@@ -329,6 +358,15 @@
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="k8d-Zd-Yqw" secondAttribute="trailing" id="7bS-eQ-xsd"/>
+                            <constraint firstItem="k8d-Zd-Yqw" firstAttribute="leading" secondItem="6mU-y1-PYN" secondAttribute="leading" id="9Hc-Pb-DZx"/>
+                            <constraint firstItem="IPD-jp-b5v" firstAttribute="top" secondItem="k8d-Zd-Yqw" secondAttribute="bottom" constant="19" id="WSC-jI-0lP"/>
+                            <constraint firstItem="AGz-mg-iYf" firstAttribute="top" secondItem="IPD-jp-b5v" secondAttribute="bottom" constant="8" id="bUD-cX-BWD"/>
+                            <constraint firstAttribute="centerX" secondItem="IPD-jp-b5v" secondAttribute="centerX" id="exS-Cc-NyP"/>
+                            <constraint firstItem="k8d-Zd-Yqw" firstAttribute="top" secondItem="bPT-0H-vJy" secondAttribute="bottom" id="mog-aN-Uit"/>
+                            <constraint firstAttribute="centerX" secondItem="k8d-Zd-Yqw" secondAttribute="centerX" id="nyb-Qv-JeO"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>

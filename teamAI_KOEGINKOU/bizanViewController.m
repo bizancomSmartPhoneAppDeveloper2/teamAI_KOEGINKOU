@@ -17,9 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURL *bizan_url = [NSURL URLWithString:@"http://sayaka-sawada.main.jp/keijiban/bizan_listen_dengoe.php"];
-    NSURLRequest *bizan_request = [NSURLRequest requestWithURL:bizan_url];
-    [self.webView loadRequest:bizan_request];
+   
+//    NSURL *bizan_url = [NSURL URLWithString:@"http://sayaka-sawada.main.jp/keijiban/bizan_listen_dengoe.php"];
+//    NSURLRequest *bizan_request = [NSURLRequest requestWithURL:bizan_url];
+//    [self.webView loadRequest:bizan_request];
     
     
 }

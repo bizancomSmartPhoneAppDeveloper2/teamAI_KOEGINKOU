@@ -83,7 +83,9 @@
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
         
-    }else {
+    }
+    else
+    {
         
         NSLog(@"眉山吟行地へ登録クリックされました");
         
