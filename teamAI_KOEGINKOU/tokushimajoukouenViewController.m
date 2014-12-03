@@ -16,12 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+     //Do any additional setup after loading the view.
    
-//    NSURL *url = [NSURL URLWithString:@"http://sayaka-sawada.main.jp/keijiban/listen_dengoe.php"];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    
-//    [self.webView loadRequest:request];
+
+    NSString *urlstr = @"http://koeginkou.miraiserver.com/onsei.php?place=";
+    NSString *placestr = @"徳島城公園";
+    NSString *encode = [placestr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
+              urlstr = [urlstr stringByAppendingString:encode];
+    NSURL *uurl = [NSURL fileURLWithPath:urlstr];//NSStringタイプをNSURLに変化する
+    NSURLRequest *request = [NSURLRequest requestWithURL:uurl];
+    
+    [self.webView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning {

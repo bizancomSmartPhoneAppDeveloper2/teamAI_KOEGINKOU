@@ -18,6 +18,7 @@
 }
 //緯度、経度の情報を格納するための変数
 @property(nonatomic)CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly) MKMapRect boundingMapRect;
 //タイトルを持つ変数
 @property(nonatomic,copy)NSString *title;
 //サブタイトルを持つ変数

@@ -89,14 +89,7 @@
         
         NSLog(@"眉山吟行地へ登録クリックされました");
         
-        NSURL *bizan_suburl = [NSURL URLWithString:@"http://sayaka-sawada.main.jp/keijiban/bizan_sub_listen_dengoe.php"];
-        NSData *bizan_urldata = [NSData dataWithContentsOfURL:bizan_suburl];
-        NSString *bizan_numstr = [[NSString alloc]initWithData:bizan_urldata encoding:NSUTF8StringEncoding];
-        NSLog(@"眉山%@",bizan_numstr);
-        bizan_number = [bizan_numstr intValue];
-        now_number = bizan_number;
-        updateURL = @"http://sayaka-sawada.main.jp/keijiban/bizan_listen_dengoe.php";
-        [self update];
+        [self update:1];
         
         [[[UIAlertView alloc] initWithTitle:@"完了"
                                     message:@"正常にアップロードされました。"
@@ -128,22 +121,15 @@
         
         NSLog(@"文化の森吟行地へ登録クリックされました");
         
-        
-        NSURL *tsurugisan_suburl = [NSURL URLWithString:@"http://sayaka-sawada.main.jp/keijiban/tsurugisan_sub_listen_dengoe.php"];
-        NSData *tsurugisan_urldata = [NSData dataWithContentsOfURL:tsurugisan_suburl];
-        NSString *tsurugisan_numstr = [[NSString alloc]initWithData:tsurugisan_urldata encoding:NSUTF8StringEncoding];
-        NSLog(@"文化の森%@",tsurugisan_numstr);
-        bunkanomori_number = [tsurugisan_numstr intValue];
-        now_number = bunkanomori_number;;
-        updateURL = @"http://sayaka-sawada.main.jp/keijiban/tsurugisan_listen_dengoe.php";
-        [self update];
+
+        [self update:2];
         
         [[[UIAlertView alloc] initWithTitle:@"完了"
                                     message:@"正常にアップロードされました。"
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
-        [self usetimer];
+       // [self usetimer];
         
         //webViewに遷移
         bunkanomoriViewController *bunkanomori_webView = [self.storyboard instantiateViewControllerWithIdentifier:@"bunkanomoriWebView"];
@@ -159,20 +145,13 @@
                           cancelButtonTitle:@"OK"
                           otherButtonTitles: nil]show];
         
-    }else {
+    }
+    else
+    {
         
         NSLog(@"徳島城公園吟行地へ登録クリックされました");
         
-        NSURL *suburl = [NSURL URLWithString:@"http://sayaka-sawada.main.jp/keijiban/sub_listen_dengoe.php"];
-        NSData *urldata = [NSData dataWithContentsOfURL:suburl];
-        NSString *numstr = [[NSString alloc]initWithData:urldata encoding:NSUTF8StringEncoding];
-        NSLog(@"番号%@",numstr);
-        number = [numstr intValue];
-        NSLog(@"徳島吟行地のテーブルのカウント数%ld",(long)number);
-        
-        updateURL = @"http://koeginkou.miraiserver.com/file.php";
-        now_number = number;
-        [self update];
+        [self update:3];
         
         [[[UIAlertView alloc] initWithTitle:@"完了"
                                     message:@"正常にアップロードされました。"
@@ -207,8 +186,9 @@
 
 
 
--(void)update{
+-(void)update:(int)placeNumber {
     updateURL = @"http://koeginkou.miraiserver.com/file.php";
+
     // 録音ファイルパス
     NSArray *filePaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                              NSUserDomainMask,YES);
@@ -259,7 +239,21 @@
     
     //送るファイル名をusernameと設定
     [body appendData:[@"Content-Disposition: form-data; name=\"place\"\r\n\r\n"  dataUsingEncoding:NSUTF8StringEncoding]];
-    NSString *placestr = @"文化の森";
+    
+    NSString *placestr = @"";
+    
+    switch(placeNumber){
+        case 1:
+            placestr = @"眉山";
+            break;
+        case 2:
+            placestr = @"文化の森";
+            break;
+        case 3:
+            placestr = @"徳島城公園";
+            break;
+    }
+    
     //文字列データ追加
     [body appendData:[[NSString stringWithFormat:@"%@\r\n", placestr] dataUsingEncoding:NSUTF8StringEncoding]];
     //bodyの最初にバウンダリ文字列(仕切線)を追加
@@ -309,49 +303,38 @@
             self.tokushimaParkLabel.hidden = NO;
             
         }
-        else
-        {
-            nil;
-        }
-        if ([inRejon containsObject:@"眉山:吟行地"])
+        else if ([inRejon containsObject:@"眉山:吟行地"])
         {
             self.bizanTourokuImage.hidden = NO;
             self.mtBizanLabel.hidden = NO;
             
         }
-        else
-        {
-            nil;
-        }
-        if ([inRejon containsObject:@"文化の森:吟行地"])
+        else if ([inRejon containsObject:@"文化の森:吟行地"])
         {
             self.bunkanomoriTourokuImage.hidden = NO;
             self.bunkaNoMori.hidden = NO;
         }
-        else
-        {
-            nil;
-        }
+ 
     }
 }
 
 
--(void)usetimer
-{
-
-//タイマーをセット
-timeTimer =[NSTimer scheduledTimerWithTimeInterval:5
-                                      target:self
-                                    selector:@selector(nextPage:)
-                                    userInfo:nil
-                                     repeats:NO];
-}
-
--(void)nextPage:(NSTimer*)timer{
-    FirstViewController * newView = [[ FirstViewController alloc] initWithNibName:@"2Launch Screen" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:newView animated:YES];
-    [timeTimer invalidate];
-}
+//-(void)usetimer
+//{
+//
+////タイマーをセット
+//timeTimer =[NSTimer scheduledTimerWithTimeInterval:5
+//                                      target:self
+//                                    selector:@selector(nextPage:)
+//                                    userInfo:nil
+//                                     repeats:NO];
+//}
+//
+//-(void)nextPage:(NSTimer*)timer{
+//    FirstViewController * newView = [[ FirstViewController alloc] initWithNibName:@"2Launch Screen" bundle:[NSBundle mainBundle]];
+//    [self.navigationController pushViewController:newView animated:YES];
+//    [timeTimer invalidate];
+//}
 
 
 @end

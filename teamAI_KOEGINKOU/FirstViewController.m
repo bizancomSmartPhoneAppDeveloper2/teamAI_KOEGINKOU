@@ -21,7 +21,7 @@
 {
     CLLocationDegrees latitude;
     CLLocationDegrees longitude;
-    CLLocationCoordinate2D co;
+    CLLocationCoordinate2D co;  //自分がいる場所の緯度経度をはかるために入れる変数
     CLLocationCoordinate2D coTokushimajoukouen;
     CLLocationCoordinate2D coBizan;
     CLLocationCoordinate2D coBunkanomori;
@@ -59,7 +59,8 @@
 
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [self newAnnotation];
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -67,21 +68,31 @@
     longitude = 0;
     [self.map setDelegate:self];
     [self locationManagerMethod];
-    [self.locationManager startMonitoringForRegion:grRegionTokushimaeki];
-    [self.locationManager startMonitoringForRegion:grRegionBizan];
-    [self.locationManager startMonitoringForRegion:grRegionTsurugisan];
+    //[self.locationManager startMonitoringForRegion:grRegionTokushimaeki];
+    //[self.locationManager startMonitoringForRegion:grRegionBizan];
+    //[self.locationManager startMonitoringForRegion:grRegionTsurugisan];
     
     
     //配列を空で生成
     inRejon = [NSMutableArray array];
     
-    // 200mの範囲円を追加
-    circleTokushimaeki = [MKCircle circleWithCenterCoordinate:coTokushimajoukouen radius: 1500];
-    circleBizan =        [MKCircle circleWithCenterCoordinate:coBizan             radius: 20];
-    circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 5000];
+    // 半径200mの範囲円を追加
+    circleTokushimaeki = [MKCircle circleWithCenterCoordinate:coTokushimajoukouen radius: 800.0];
+    [self.map addOverlay:circleTokushimaeki];
+    
+    circleBizan =        [MKCircle circleWithCenterCoordinate:coBizan             radius: 800.0];
+    [self.map addOverlay:circleBizan];
+    
+    circleTsurugisan =   [MKCircle circleWithCenterCoordinate:coBunkanomori       radius: 800.0];
+    [self.map addOverlay:circleTsurugisan];
+
+    
+    
     //[self getObject];
     //[self defaultMapSettei];
-    CLLocationDistance radiusOnMeter = 10000;
+    
+    
+    CLLocationDistance radiusOnMeter = 800;
     
     grRegionTokushimaeki = [[CLCircularRegion alloc] initWithCenter:coTokushimajoukouen radius:radiusOnMeter identifier:@"徳島城公園:吟行地"];
     [self.locationManager startMonitoringForRegion:grRegionTokushimaeki];
@@ -104,22 +115,29 @@
                   @"toukou10.png",@"toukou11.png",@"toukou13.png",@"toukou12.png",
                   
                   @"kiku00.png",@"kiku1.png",@"kiku000",@"kiku7.png",
-                  @"kiku2.png",@"kiku3.png",@"kiku4.png",@"kiku5.png",@"kiku6.png",@"end002.png"];
+                  @"kiku2.png",@"kiku3.png",@"kiku4.png",@"kiku5.png",@"kiku6.png",@"end002.png"
+                 ];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 //アノテーションを追加してアノテーション(ピン)が表示されるときに呼ばれるメソッド
--(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+-(MKAnnotationView*) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
     //現在地の情報でないか
-    if (annotation != self.map.userLocation) {
+    if (annotation != self.map.userLocation)
+    {
         NSString *pin = @"pin";
         //pinで示すリサイクル可能なアノテーションビューかnilが返ってくる
         MKAnnotationView *av = (MKAnnotationView*)[self.map dequeueReusableAnnotationViewWithIdentifier:pin];
-        if (av == nil) {
+        
+        if (av == nil)
+        {
+            NSLog(@"アノテーションのイメージ！");
             //anotetionとpinを用いて値を代入
             av = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pin];
             //表示する画像を設定
@@ -127,15 +145,20 @@
             //ピンをクリックしたときに情報を表示するようにする
             av.canShowCallout = YES;
         }
+        
         return av;
-    }else{
+    }
+    else
+    {
         return nil;
     }
 }
 
-- (void)mapView:(MKMapView*)mapView didAddAnnotationViews:(NSArray*)views{
+- (void)mapView:(MKMapView*)mapView didAddAnnotationViews:(NSArray*)views
+{
     // アノテーションビューを取得する
-    for (MKAnnotationView *annotationView in views) {
+    for (MKAnnotationView *annotationView in views)
+    {
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         // コールアウトの左側のアクセサリビューにボタンを追加する
@@ -150,13 +173,18 @@
 {
     //領域外のボタンが押された場合は何も動作しない
     //領域内のボタンが押された場合はWebViewに遷移
-    for (int i = 0; i < inRejon.count; i++) {
-        NSLog(@"%@%@",view.annotation.title,[inRejon objectAtIndex:i]);}
+    for (int i = 0; i < inRejon.count; i++)
+    {
+        NSLog(@"%@%@",view.annotation.title,[inRejon objectAtIndex:i]);
+    }
     
-    if ([inRejon containsObject:view.annotation.title]) {
+    if ([inRejon containsObject:view.annotation.title])
+    {
         NSLog(@"入ってます");
         NSString *urlstr;
-        if ([view.annotation.title isEqualToString:@"徳島城公園:吟行地"]) {
+        
+        if ([view.annotation.title isEqualToString:@"徳島城公園:吟行地"])
+        {
             //徳島城公園の声をきくURL文字列を格納
             urlstr = @"http://koeginkou.miraiserver.com/onsei.php?place=";
             NSString *placestr = @"徳島城公園";
@@ -164,7 +192,8 @@
             urlstr = [urlstr stringByAppendingString:encode];
             
         }
-        else if ([view.annotation.title isEqualToString:@"眉山:吟行地"]) {
+        else if ([view.annotation.title isEqualToString:@"眉山:吟行地"])
+        {
             //webViewに遷移
             //眉山の声をきくURL文字列を格納
             urlstr = @"http://koeginkou.miraiserver.com/onsei.php?place=";
@@ -173,7 +202,9 @@
             urlstr = [urlstr stringByAppendingString:encode];
             
             
-        }else if ([view.annotation.title isEqualToString:@"文化の森:吟行地"]) {
+        }
+        else if ([view.annotation.title isEqualToString:@"文化の森:吟行地"])
+        {
             
             //webViewに遷移
             //眉山の声をきくURL文字列を格納
@@ -184,16 +215,19 @@
             
             
         }
+        
         bunkanomoriViewController *bunkanomoriWebView = [self.storyboard instantiateViewControllerWithIdentifier:@"bunkanomoriWebView"];
         bunkanomoriWebView.urlstr = urlstr;
         [self presentViewController:bunkanomoriWebView animated:YES completion:nil];
         
         
         //アノテーションの情報を取得
-        NSLog(@"title: %@", view.annotation.title);
-        NSLog(@"subtitle: %@", view.annotation.subtitle);
+        NSLog(@"title: %@",     view.annotation.title);
+        NSLog(@"subtitle: %@",  view.annotation.subtitle);
         NSLog(@"coord: %f, %f", view.annotation.coordinate.latitude, view.annotation.coordinate.longitude);
-    }else{
+    }
+    else
+    {
         [[[UIAlertView alloc] initWithTitle:@"領域外です"
                                     message:@"領域外のため只今閲覧・投稿できません。"
                                    delegate:nil
@@ -210,45 +244,54 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     
-    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+    {
         // iOS バージョンが 8 以上で、requestAlwaysAuthorization メソッドが
         // 利用できる場合
         
         // 位置情報測位の許可を求めるメッセージを表示する
         [self.locationManager requestAlwaysAuthorization];
         //      [self.locationManager requestWhenInUseAuthorization];
-    } else {
+    }
+    else
+    {
         // iOS バージョンが 8 未満で、requestAlwaysAuthorization メソッドが
         // 利用できない場合
         
         // 測位を開始する
+        //現在地を指定した数値の部分だけ表示させる
         [self.locationManager startUpdatingLocation];
     }
 }
 
-//現在地を取得
+//現在地を取得して現在地から指定した数字文だけ画面に表示させる。
 //現在地の緯度と経度を取得
-- (void)locationManager:(CLLocationManager *)manager
-didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
     
     if (status == kCLAuthorizationStatusAuthorizedAlways ||
-        status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        status == kCLAuthorizationStatusAuthorizedWhenInUse)
+    {
         // 位置情報測位の許可状態が「常に許可」または「使用中のみ」の場合、
         // 測位を開始する（iOS バージョンが 8 以上の場合のみ該当する）
         // ※iOS8 以上の場合、位置情報測位が許可されていない状態で
         // 　startUpdatingLocation メソッドを呼び出しても、何も行われない。
+        
+        //現在地を指定した数値の部分だけ表示させる
         [self.locationManager startUpdatingLocation];
         
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
     
     CLLocation *location = [locations lastObject];
     NSLog(@"現在地経度%f 現在地緯度%f",
           location.coordinate.latitude,
           location.coordinate.longitude);
+    
+    
     latitude = location.coordinate.latitude;
     longitude = location.coordinate.longitude;
     [self defaultMapSettei];
@@ -257,7 +300,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
 }
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
     [[[UIAlertView alloc] initWithTitle:@"エラー"
                                 message:@"位置情報が取得できませんでした。"
                                delegate:nil
@@ -266,7 +310,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
 }
 
--(void)defaultMapSettei{
+-(void)defaultMapSettei
+{
     //デリゲートを自分自身に設定
     self.map.delegate = self;
     NSLog(@"中心経度%f 中心緯度%f",latitude,longitude);
@@ -279,17 +324,21 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
     //地図の縮尺を設定、coを中心に1000m四方で設定
     self.map.region = MKCoordinateRegionMakeWithDistance(co, 3500, 3500);
+   
     //区画内の建物表示プロパティ、初期値NO
     [self.map setShowsBuildings:YES];
+    
     //コンビニなどランドマークの表示プロパティ、初期値NO
     [self.map setShowsPointsOfInterest:YES];
+    
     //ユーザの現在地表示プロパティ（表示のされ方は純正マップアプリを参照）初期値NO
     [self.map setShowsUserLocation:YES];
     
 }
 
 
--(void)newAnnotation{
+-(void)newAnnotation
+{
     //デリゲートを自分自身に設定
     self.map.delegate = self;
     
@@ -352,11 +401,12 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
 //オーバーレイを作成
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id < MKOverlay >)overlay
 {
+    NSLog (@"通過したか？View for overlay");
     MKCircle* circle = overlay;
     MKCircleView* circleOverlayView =   [[MKCircleView alloc] initWithCircle:circle];
-    circleOverlayView.strokeColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
-    circleOverlayView.lineWidth = 4.;
-    circleOverlayView.fillColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
+    circleOverlayView.strokeColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.0 alpha:0.5];
+    circleOverlayView.lineWidth = 4.0;
+    circleOverlayView.fillColor = [UIColor colorWithRed:0.2 green:1.0 blue:0.0 alpha:0.3];
     return circleOverlayView;
 }
 
@@ -380,7 +430,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
 //最初に地図を表示した時に領域内にいるのかいないのか
 - (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region{
     
-    switch (state) {
+    switch (state)
+    {
         case CLRegionStateInside:
             NSLog(@"%@は領域内です",region.identifier);
             //[[[UIAlertView alloc] initWithTitle:(@"%@",region.identifier)
@@ -431,7 +482,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
 {
     
     NSLog(@"ジオフェンス領域%@に入りました",region.identifier);
-    //[self.map addOverlay:circleTokushimaeki];
+    [self.map addOverlay:circleTokushimaeki];
 }
 
 //ジオフェンス監視（出たとき呼ばれるメソッド）

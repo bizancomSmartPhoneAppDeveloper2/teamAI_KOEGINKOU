@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface bizanViewController : UIViewController
-//@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
